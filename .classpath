@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Drawing JavaFx/src"/>
+	<classpathentry kind="src" path="Drawing JavaFx/test"/>
+	<classpathentry kind="lib" path="Drawing JavaFx/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="Drawing JavaFx/lib/hamcrest-all-1.3.jar"/>
+	<classpathentry kind="lib" path="Drawing JavaFx/lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="Drawing JavaFx/lib/testfx-core-4.0.4-alpha.jar"/>
+	<classpathentry kind="lib" path="Drawing JavaFx/lib/testfx-junit-4.0.4-alpha.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="Drawing JavaFx/out/production/Drawing JavaFx"/>
+</classpath>
