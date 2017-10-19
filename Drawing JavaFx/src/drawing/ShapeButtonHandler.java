@@ -24,7 +24,8 @@ public abstract class ShapeButtonHandler implements EventHandler<Event> {
     @Override
     public void handle(Event event) {
 
-        if (event instanceof ActionEvent) {
+        if (event instanceof ActionEvent) 
+        {
             drawing.addEventHandler(MouseEvent.MOUSE_PRESSED, this);
         }
 
