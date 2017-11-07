@@ -1,12 +1,11 @@
 package drawing;
 
-import javafx.geometry.Point2D;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by lewandowski on 05/09/2017.

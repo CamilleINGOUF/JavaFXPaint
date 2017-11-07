@@ -7,11 +7,12 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class ContainerShape extends Shape
 {
-	private ArrayList<Shape> shapes = new ArrayList<Shape>(0);
+	private ArrayList<Shape> shapes;
 
 	public ContainerShape(Point2D origin) 
 	{
 		super(origin);
+		shapes = new ArrayList<Shape>(0);
 	}
 
 	@Override
@@ -32,13 +33,14 @@ public class ContainerShape extends Shape
 	public void setOrigin(double x, double y)
     {
         this.origin = new Point2D(x, y);
-        if(shapes == null)
-        	return;
-        for(Shape s : shapes)
+        for(int i = 0; i < shapes.size(); i++)
         {
-        	double xt =  x - s.getOrigin().getX();
-        	double yt = y - s.getOrigin().getY();
-        	s.setOrigin(x + xt, y + yt);
+        	double xt =  x - shapes.get(i).getOrigin().getX();
+        	double yt = y - shapes.get(i).getOrigin().getY();
+        	System.out.println("x : "+x+", y : "+y);
+        	System.out.println("xo : "+shapes.get(i).getOrigin().getX()+", yo : "+shapes.get(i).getOrigin().getY());
+        	System.out.println("xt : "+xt+", yt : "+yt+"\n==============");
+        	shapes.get(i).setOrigin(x + xt, y + yt);
         }
     }
 	

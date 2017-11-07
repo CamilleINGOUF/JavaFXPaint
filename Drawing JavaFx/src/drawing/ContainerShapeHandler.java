@@ -19,9 +19,22 @@ public class ContainerShapeHandler implements EventHandler<ActionEvent>
 	public void handle(ActionEvent event) 
 	{
 		//Taking ALL the shape to make one container
-		ContainerShape cs = new ContainerShape(new Point2D(0, 0));
+		
+		double x = drawing.getShapes().get(0).getOrigin().getX();
+		double y = drawing.getShapes().get(0).getOrigin().getY();
+		
 		for(Iterator<Shape> iter = drawing.iterator(); iter.hasNext();)
+		{
+			Shape s = iter.next();
+			x = Math.min(x, s.getOrigin().getX());
+			y = Math.min(y, s.getOrigin().getY());
+		}
+		
+		ContainerShape cs = new ContainerShape(new Point2D(x, y));
+		for(Iterator<Shape> iter = drawing.iterator(); iter.hasNext();)
+		{
 			cs.add(iter.next());
+		}
 		drawing.clear();
 		drawing.addShape(cs);
 	}
