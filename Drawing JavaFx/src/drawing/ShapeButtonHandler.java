@@ -11,7 +11,7 @@ import javafx.scene.input.MouseEvent;
  */
 public abstract class ShapeButtonHandler implements EventHandler<Event> {
 
-    private Drawing drawing;
+    protected Drawing drawing;
     protected Point2D origin;
     protected Point2D destination;
 

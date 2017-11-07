@@ -1,5 +1,6 @@
 package drawing;
 
+import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +17,8 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     GraphicsContext gc;
 
     ArrayList<Shape> shapes;
+    
+    private ArrayList<StatusObserver> observers;
 
     public Drawing() {
         super();
@@ -25,6 +28,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, handler);
         this.addEventHandler(MouseEvent.MOUSE_DRAGGED, handler);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, handler);
+        observers = new ArrayList<StatusObserver>();
     }
 
     @Override
@@ -35,11 +39,18 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     public void addShape(Shape shape) {
         shapes.add(shape);
         repaint();
+        notifyObservers();
     }
 
     public void clear() {
         shapes.clear();
         repaint();
+        notifyObservers();
+    }
+    
+    public ArrayList<Shape> getShapes()
+    {
+    	return shapes;
     }
 
     public void repaint() {
@@ -52,5 +63,16 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     @Override
     public boolean isResizable() {
         return true;
+    }
+    
+    public void registerObserver(StatusObserver s)
+    {
+    	observers.add(s);
+    }
+    
+    public void notifyObservers()
+    {
+    	for(StatusObserver s : observers)
+    		s.updateStatus();
     }
 }

@@ -1,5 +1,7 @@
 package drawing;
 
+import java.util.ArrayList;
+
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
@@ -10,7 +12,8 @@ public abstract class Shape {
 
     protected Point2D origin;
 
-    public Shape(Point2D origin) {
+    public Shape(Point2D origin)
+    {
         setOrigin(origin.getX(), origin.getY());
     }
 
@@ -22,7 +25,8 @@ public abstract class Shape {
 
     public abstract boolean isOn(Point2D p);
 
-    public void setOrigin(double x, double y) {
+    public void setOrigin(double x, double y) 
+    {
         this.origin = new Point2D(x, y);
     }
 }
