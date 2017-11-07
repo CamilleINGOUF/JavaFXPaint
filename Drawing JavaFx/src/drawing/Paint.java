@@ -82,6 +82,7 @@ public class Paint extends Application implements StatusObserver{
         groupButton.addEventHandler(ActionEvent.ACTION, new ContainerShapeHandler(drawing));
         
         ungroupButton = new Button("Dégrouper");
+        ungroupButton.addEventHandler(ActionEvent.ACTION, new FreeShapeHandler(drawing));
 
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton);
         return hbox;

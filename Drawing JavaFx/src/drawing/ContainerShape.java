@@ -29,7 +29,7 @@ public class ContainerShape extends Shape
 		return false;
 	}
 	
-	public void setOrigin(double x, double y) 
+	public void setOrigin(double x, double y)
     {
         this.origin = new Point2D(x, y);
         if(shapes == null)
