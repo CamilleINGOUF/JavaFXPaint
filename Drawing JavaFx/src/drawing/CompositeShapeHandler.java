@@ -4,12 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 
-public class ContainerShapeHandler implements EventHandler<ActionEvent>
+public class CompositeShapeHandler implements EventHandler<ActionEvent>
 {
 
 	private Drawing drawing;
 
-    public ContainerShapeHandler(Drawing drawing) 
+    public CompositeShapeHandler(Drawing drawing) 
     {
         this.drawing = drawing;
     }
@@ -30,7 +30,7 @@ public class ContainerShapeHandler implements EventHandler<ActionEvent>
 			y = Math.min(y, s.getOrigin().getY());
 		}
 		
-		ContainerShape cs = new ContainerShape(new Point2D(x, y));
+		CompositeShape cs = new CompositeShape(new Point2D(x, y));
 		for(int  i = 0; i < drawing.getSelectedShapes().size(); i++)
 		{
 			cs.add(drawing.getSelectedShapes().get(i));

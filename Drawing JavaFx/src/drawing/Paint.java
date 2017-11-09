@@ -72,7 +72,7 @@ public class Paint extends Application{
         rectangleButton.addEventHandler(ActionEvent.ACTION, new RectangleButtonHandler(drawing));
         
         groupButton = new Button("Grouper");
-        groupButton.addEventHandler(ActionEvent.ACTION, new ContainerShapeHandler(drawing));
+        groupButton.addEventHandler(ActionEvent.ACTION, new CompositeShapeHandler(drawing));
         
         ungroupButton = new Button("Dégrouper");
         ungroupButton.addEventHandler(ActionEvent.ACTION, new FreeShapeHandler(drawing));

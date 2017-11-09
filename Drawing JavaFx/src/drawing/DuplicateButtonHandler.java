@@ -3,7 +3,6 @@ package drawing;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 
 public class DuplicateButtonHandler implements EventHandler<ActionEvent> 

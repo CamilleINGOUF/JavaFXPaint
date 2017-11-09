@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 
-public class ContainerShape extends Shape
+public class CompositeShape extends Shape
 {
 	private ArrayList<Shape> shapes;
 
-	public ContainerShape(Point2D origin) 
+	public CompositeShape(Point2D origin) 
 	{
 		super(origin);
 		shapes = new ArrayList<Shape>(0);
 	}
 	
-	public ContainerShape(ContainerShape that) 
+	public CompositeShape(CompositeShape that) 
 	{
 		super(that);
 		this.shapes = new ArrayList<Shape>();
@@ -73,6 +73,6 @@ public class ContainerShape extends Shape
 	@Override
 	public Shape clone() 
 	{
-		return new ContainerShape(this);
+		return new CompositeShape(this);
 	}
 }

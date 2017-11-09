@@ -21,9 +21,9 @@ public class FreeShapeHandler  implements EventHandler<ActionEvent>
 		for(int  i = 0; i < drawing.getSelectedShapes().size(); i++)
 		{
 			Shape s = drawing.getSelectedShapes().get(i);
-			if (s instanceof ContainerShape) 
+			if (s instanceof CompositeShape) 
 			{
-				ContainerShape cs = (ContainerShape) s;
+				CompositeShape cs = (CompositeShape) s;
 				for(int j  = 0; j < cs.getShapes().size(); j++)
 				{
 					shapesTemp.add(cs.getShapes().get(j));
