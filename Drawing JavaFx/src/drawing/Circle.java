@@ -7,7 +7,8 @@ import javafx.scene.paint.Color;
 /**
  * Created by lewandowski on 07/09/2017.
  */
-public class Circle extends Shape {
+public class Circle extends Shape 
+{
 
     private double radius;
 
@@ -15,6 +16,12 @@ public class Circle extends Shape {
         super(origin);
         this.radius = radius;
     }
+    
+    public Circle(Circle that) 
+    {
+    	super(that);
+    	this.radius = that.radius;
+	}
 
     @Override
     public void paint(GraphicsContext gc) {
@@ -33,4 +40,10 @@ public class Circle extends Shape {
     private double distanceToCenter(Point2D p) {
         return Math.abs(this.origin.distance(p));
     }
+
+	@Override
+	public Shape clone() 
+	{
+		return new Circle(this);
+	}
 }

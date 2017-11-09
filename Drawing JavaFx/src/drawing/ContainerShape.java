@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 public class ContainerShape extends Shape
 {
@@ -14,6 +13,14 @@ public class ContainerShape extends Shape
 	{
 		super(origin);
 		shapes = new ArrayList<Shape>(0);
+	}
+	
+	public ContainerShape(ContainerShape that) 
+	{
+		super(that);
+		this.shapes = new ArrayList<Shape>();
+		for(Shape s : that.shapes)
+			this.shapes.add(s.clone());
 	}
 
 	@Override
@@ -62,4 +69,10 @@ public class ContainerShape extends Shape
     	return shapes;
     }
     /* ********* */
+
+	@Override
+	public Shape clone() 
+	{
+		return new ContainerShape(this);
+	}
 }

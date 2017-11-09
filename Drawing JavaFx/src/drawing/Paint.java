@@ -23,6 +23,8 @@ public class Paint extends Application{
     
     private Button groupButton;
     private Button ungroupButton;
+    
+    private Button duplicate;
 
     public static void main(String[] args) {
         launch(Paint.class, args);
@@ -69,13 +71,16 @@ public class Paint extends Application{
         rectangleButton = new Button("Rectangle");
         rectangleButton.addEventHandler(ActionEvent.ACTION, new RectangleButtonHandler(drawing));
         
-        groupButton = new Button("Grouper (en test)");
+        groupButton = new Button("Grouper");
         groupButton.addEventHandler(ActionEvent.ACTION, new ContainerShapeHandler(drawing));
         
         ungroupButton = new Button("Dégrouper");
         ungroupButton.addEventHandler(ActionEvent.ACTION, new FreeShapeHandler(drawing));
+        
+        duplicate = new Button("Dupliquer");
+        duplicate.addEventHandler(ActionEvent.ACTION, new DuplicateButtonHandler(drawing));
 
-        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton);
+        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton, duplicate);
         return hbox;
     }
 }

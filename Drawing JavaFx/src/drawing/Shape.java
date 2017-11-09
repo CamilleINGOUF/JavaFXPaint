@@ -17,6 +17,12 @@ public abstract class Shape
         this.origin = new Point2D(origin.getX(), origin.getY());
         selected = false;
     }
+    
+    public Shape(Shape that)
+    {
+    	this.origin = new Point2D(that.origin.getX(), that.getOrigin().getY());
+        selected = false;
+    }
 
     public Point2D getOrigin() 
     {
@@ -41,4 +47,6 @@ public abstract class Shape
     {
         this.origin = new Point2D(x, y);
     }
+    
+    public abstract Shape clone();
 }

@@ -17,6 +17,13 @@ public class Rectangle extends Shape {
         this.width = width;
         this.height = height;
     }
+    
+    public Rectangle(Rectangle that) 
+    {
+    	super(that);
+    	this.width = that.width;
+    	this.height = that.height;
+	}
 
     @Override
     public void paint(GraphicsContext gc) {
@@ -32,4 +39,10 @@ public class Rectangle extends Shape {
         return (p.getX() > origin.getX() && p.getX() < origin.getX()+width &&
                 p.getY() > origin.getY() && p.getY() < origin.getY()+height);
     }
+
+	@Override
+	public Shape clone() 
+	{
+		return new Rectangle(this);
+	}
 }
