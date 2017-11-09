@@ -27,11 +27,13 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         this.addEventHandler(MouseEvent.MOUSE_PRESSED, handler);
         this.addEventHandler(MouseEvent.MOUSE_DRAGGED, handler);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, handler);
+        this.addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
         observers = new ArrayList<StatusObserver>();
     }
 
     @Override
-    public Iterator<Shape> iterator() {
+    public Iterator<Shape> iterator() 
+    {
         return shapes.iterator();
     }
 
@@ -47,14 +49,34 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         notifyObservers();
     }
     
+    public void remove(Shape s)
+    {
+    	shapes.remove(s);
+    }
+    
     public ArrayList<Shape> getShapes()
     {
     	return shapes;
     }
+    
+    public ArrayList<Shape> getSelectedShapes()
+    {
+    	ArrayList<Shape> sh = new ArrayList<Shape>();
+    	
+    	for(Shape s : shapes)
+    	{
+    		if(s.isSelected())
+    			sh.add(s);
+    	}
+    	
+    	return sh;
+    }
 
-    public void repaint() {
+    public void repaint() 
+    {
         gc.clearRect(0,0,getWidth(), getHeight());
-        for (Shape s: shapes) {
+        for (Shape s: shapes) 
+        {
             s.paint(gc);
         }
     }

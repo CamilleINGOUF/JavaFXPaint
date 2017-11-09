@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class ContainerShape extends Shape
 {
@@ -16,7 +17,7 @@ public class ContainerShape extends Shape
 	}
 
 	@Override
-	public void paint(GraphicsContext gc) 
+	public void paint(GraphicsContext gc)
 	{
 		for(Shape s : shapes)
 			s.paint(gc);
@@ -32,15 +33,16 @@ public class ContainerShape extends Shape
 	
 	public void setOrigin(double x, double y)
     {
+		double oldX = origin.getX();
+		double oldY = origin.getY();
+		double translateX = x- oldX ;
+		double translateY =  y - oldY;
         this.origin = new Point2D(x, y);
         for(int i = 0; i < shapes.size(); i++)
         {
-        	double xt =  x - shapes.get(i).getOrigin().getX();
-        	double yt = y - shapes.get(i).getOrigin().getY();
-        	System.out.println("x : "+x+", y : "+y);
-        	System.out.println("xo : "+shapes.get(i).getOrigin().getX()+", yo : "+shapes.get(i).getOrigin().getY());
-        	System.out.println("xt : "+xt+", yt : "+yt+"\n==============");
-        	shapes.get(i).setOrigin(x + xt, y + yt);
+        	double xt =  translateX + shapes.get(i).getOrigin().getX();
+        	double yt = translateY + shapes.get(i).getOrigin().getY();
+        	shapes.get(i).setOrigin(xt, yt);
         }
     }
 	

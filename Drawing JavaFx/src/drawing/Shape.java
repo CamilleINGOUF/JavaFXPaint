@@ -6,17 +6,31 @@ import javafx.scene.canvas.GraphicsContext;
 /**
  * Created by lewandowski on 07/09/2017.
  */
-public abstract class Shape {
-
+public abstract class Shape 
+{
     protected Point2D origin;
+    
+    protected boolean selected;
 
     public Shape(Point2D origin)
     {
         this.origin = new Point2D(origin.getX(), origin.getY());
+        selected = false;
     }
 
-    public Point2D getOrigin() {
+    public Point2D getOrigin() 
+    {
         return origin;
+    }
+    
+    public boolean isSelected()
+    {
+    	return selected;
+    }
+    
+    public void setSelected(boolean flag)
+    {
+    	selected = flag;
     }
 
     public abstract void paint(GraphicsContext gc) ;

@@ -2,12 +2,14 @@ package drawing;
 
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
  * Created by lewandowski on 05/09/2017.
  */
-public class DrawingMouseEventHandler implements EventHandler<MouseEvent> {
+public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
 
     private Drawing drawing;
 
@@ -21,16 +23,25 @@ public class DrawingMouseEventHandler implements EventHandler<MouseEvent> {
     public DrawingMouseEventHandler(Drawing drawing) {
         this.drawing = drawing;
     }
+    
+    public void handle(InputEvent event)
+    {    
+        if(event.getEventType().equals(KeyEvent.KEY_PRESSED))
+        {
+        	System.out.println("oui");
+        	KeyEvent ke = (KeyEvent) event;
+        	System.out.println("key : "+ke.getCharacter());
+        }
 
-    @Override
-    public void handle(MouseEvent event) {
-
-        if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) {
-            orgSceneX = event.getSceneX();
-            orgSceneY = event.getSceneY();
+        if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 
+        {
+        	MouseEvent me = (MouseEvent) event;
+            orgSceneX = me.getSceneX();
+            orgSceneY = me.getSceneY();
 
             for (Shape s : drawing) {
-                if (s.isOn(new Point2D(event.getX(), event.getY()))) {
+                if (s.isOn(new Point2D(me.getX(), me.getY()))) 
+                {
                     currentShape = s;
                 }
             }
@@ -40,9 +51,11 @@ public class DrawingMouseEventHandler implements EventHandler<MouseEvent> {
             }
         }
 
-        if (event.getEventType().equals(MouseEvent.MOUSE_DRAGGED)) {
-            double offsetX = event.getSceneX() - orgSceneX;
-            double offsetY = event.getSceneY() - orgSceneY;
+        if (event.getEventType().equals(MouseEvent.MOUSE_DRAGGED)) 
+        {
+        	MouseEvent me = (MouseEvent) event;
+            double offsetX = me.getSceneX() - orgSceneX;
+            double offsetY = me.getSceneY() - orgSceneY;
             double newTranslateX = orgTranslateX + offsetX;
             double newTranslateY = orgTranslateY + offsetY;
 
@@ -52,8 +65,31 @@ public class DrawingMouseEventHandler implements EventHandler<MouseEvent> {
             }
         }
 
-        if (event.getEventType().equals(MouseEvent.MOUSE_RELEASED)) {
+        if (event.getEventType().equals(MouseEvent.MOUSE_RELEASED)) 
+        {
             currentShape = null;
+        }
+        
+        if(event.getEventType().equals(MouseEvent.MOUSE_CLICKED))
+        {
+        	MouseEvent me = (MouseEvent) event;
+        	for (Shape s : drawing) 
+        	{
+                 if (s.isOn(new Point2D(me.getX(), me.getY()))) 
+                 {
+                     currentShape = s;
+                 }
+        	}
+        	
+        	if(currentShape == null)
+        		return;
+        	
+        	if(!me.isShiftDown())
+        	{
+        		for(Shape s : drawing)
+        			s.setSelected(false);
+        	}
+        	currentShape.setSelected(true);
         }
     }
 }

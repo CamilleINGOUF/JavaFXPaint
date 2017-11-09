@@ -1,7 +1,6 @@
 package drawing;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,16 +18,15 @@ public class FreeShapeHandler  implements EventHandler<ActionEvent>
 	public void handle(ActionEvent event) 
 	{
 		ArrayList<Shape> shapesTemp = new ArrayList<Shape>();
-		//taking the only container to free all shapes
-		for(Iterator<Shape> iter = drawing.iterator(); iter.hasNext();)
+		for(int  i = 0; i < drawing.getSelectedShapes().size(); i++)
 		{
-			Shape s = iter.next();
+			Shape s = drawing.getSelectedShapes().get(i);
 			if (s instanceof ContainerShape) 
 			{
 				ContainerShape cs = (ContainerShape) s;
-				for(int i  = 0; i < cs.getShapes().size(); i++)
+				for(int j  = 0; j < cs.getShapes().size(); j++)
 				{
-					shapesTemp.add(cs.getShapes().get(i));
+					shapesTemp.add(cs.getShapes().get(j));
 				}
 			}
 			else
@@ -36,7 +34,6 @@ public class FreeShapeHandler  implements EventHandler<ActionEvent>
 				shapesTemp.add(s);
 			}
 		}
-		drawing.clear();
 		for(Shape s : shapesTemp)
 			drawing.addShape(s);
 	}
