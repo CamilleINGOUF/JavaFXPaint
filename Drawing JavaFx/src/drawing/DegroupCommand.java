@@ -4,9 +4,24 @@ import java.util.ArrayList;
 
 public class DegroupCommand extends Command
 {
+	private ArrayList<Shape> targets;
+	
+	private CompositeShape group;
+	
 	public DegroupCommand(Drawing drawing) 
 	{
 		super(drawing);
+		targets = new ArrayList<Shape>();
+	}
+
+	public DegroupCommand(DegroupCommand that) 
+	{
+		super(that.drawing);
+		this.history = drawing.getCommandHistory();
+		this.history = that.history;
+		targets = new ArrayList<Shape>();
+		for(Shape s : that.targets)
+			targets.add(s);
 	}
 
 	@Override
@@ -21,8 +36,11 @@ public class DegroupCommand extends Command
 				CompositeShape cs = (CompositeShape) s;
 				for(int j  = 0; j < cs.getShapes().size(); j++)
 				{
-					shapesTemp.add(cs.getShapes().get(j));
+					Shape shape = cs.getShapes().get(j);
+					shapesTemp.add(shape);
+					targets.add(shape);
 				}
+				group = cs;
 				drawing.remove(cs);
 			}
 			else
@@ -32,19 +50,31 @@ public class DegroupCommand extends Command
 		}
 		for(Shape s : shapesTemp)
 			drawing.addShape(s);
-        drawing.getCommandHistory().pushUndo(this);
+     	history.pushUndo(this);
+     	history.clearRedos();
 	}
 
 	@Override
-	public void undo() {
-		// TODO Auto-generated method stub
-		
+	public void undo() 
+	{
+		for(Shape s : targets)
+			drawing.remove(s);
+		drawing.addShape(group);
+		drawing.repaint();
 	}
 
 	@Override
-	public void redo() {
-		// TODO Auto-generated method stub
-		
+	public void redo() 
+	{
+		drawing.remove(group);
+		for(Shape s : targets)
+			drawing.addShape(s);
+		drawing.repaint();
+	}
+
+	@Override
+	public Command clone() {
+		return new DegroupCommand(this);
 	}
 	
 }

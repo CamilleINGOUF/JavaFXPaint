@@ -4,10 +4,22 @@ import java.util.ArrayList;
 
 public class DuplicateCommand extends Command
 {
+	private ArrayList<Shape> createdShape;
 
 	public DuplicateCommand(Drawing drawing) 
 	{
 		super(drawing);
+		this.history = drawing.getCommandHistory();
+		createdShape = new ArrayList<Shape>();
+	}
+
+	public DuplicateCommand(DuplicateCommand that) 
+	{
+		super(that.drawing);
+		this.history = that.history;
+		createdShape = new ArrayList<Shape>();
+		for(Shape s : that.createdShape)
+			createdShape.add(s);
 	}
 
 	@Override
@@ -17,23 +29,36 @@ public class DuplicateCommand extends Command
 		for(Shape s : drawing)
 		{
 			if(s.isSelected())
-				sh.add(s.clone());
+			{
+				Shape clone = s.clone();
+				sh.add(clone);
+				createdShape.add(clone);
+			}
 		}
 		for(Shape s : sh)
 			drawing.addShape(s);
-        drawing.getCommandHistory().pushUndo(this);
+        drawing.getCommandHistory().pushUndo(this.clone());
+        createdShape.clear();
 	}
 
 	@Override
-	public void undo() {
-		// TODO Auto-generated method stub
-		
+	public void undo() 
+	{
+		for(Shape s : createdShape)
+			drawing.remove(s);
+		drawing.repaint();
 	}
 
 	@Override
-	public void redo() {
-		// TODO Auto-generated method stub
-		
+	public void redo() 
+	{
+		for(Shape s : createdShape)
+			drawing.addShape(s);
+		drawing.repaint();
 	}
 
+	@Override
+	public Command clone() {
+		return new DuplicateCommand(this);
+	}
 }

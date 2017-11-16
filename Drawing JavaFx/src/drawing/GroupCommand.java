@@ -20,6 +20,9 @@ public class GroupCommand extends Command
 		super(that.drawing);
 		this.history = that.history;
 		groupedShapes = new ArrayList<Shape>();
+		for(Shape s : that.groupedShapes)
+			groupedShapes.add(s.clone());
+		this.createdGroup = (CompositeShape) that.createdGroup.clone();
 	}
 
 	@Override
@@ -51,7 +54,8 @@ public class GroupCommand extends Command
 		
 		drawing.addShape(cs);
 		createdGroup = cs;
-        drawing.getCommandHistory().pushUndo(this);
+        history.pushUndo(this);
+        history.clearRedos();
 	}
 
 	@Override
@@ -60,6 +64,7 @@ public class GroupCommand extends Command
 		drawing.remove(createdGroup);
 		for(Shape s : groupedShapes)
 			drawing.addShape(s);
+		drawing.repaint();
 	}
 
 	@Override
@@ -68,6 +73,7 @@ public class GroupCommand extends Command
 		drawing.addShape(createdGroup);
 		for(Shape s : groupedShapes)
 			drawing.remove(s);
+		drawing.repaint();
 	}
 
 	@Override

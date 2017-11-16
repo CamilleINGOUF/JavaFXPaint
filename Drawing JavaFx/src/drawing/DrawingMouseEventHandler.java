@@ -19,6 +19,12 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
     private double orgTranslateY;
 
     private Shape currentShape;
+    
+    
+    private TranslateCommand translateCommand;
+    
+    private double newTranslateX;
+    private double newTranslateY;
 
     public DrawingMouseEventHandler(Drawing drawing) {
         this.drawing = drawing;
@@ -28,9 +34,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
     {    
         if(event.getEventType().equals(KeyEvent.KEY_PRESSED))
         {
-        	System.out.println("oui");
         	KeyEvent ke = (KeyEvent) event;
-        	System.out.println("key : "+ke.getCharacter());
         }
 
         if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 
@@ -56,10 +60,11 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         	MouseEvent me = (MouseEvent) event;
             double offsetX = me.getSceneX() - orgSceneX;
             double offsetY = me.getSceneY() - orgSceneY;
-            double newTranslateX = orgTranslateX + offsetX;
-            double newTranslateY = orgTranslateY + offsetY;
+            newTranslateX = orgTranslateX + offsetX;
+            newTranslateY = orgTranslateY + offsetY;
 
             if (currentShape != null) {
+                translateCommand = new TranslateCommand(drawing, currentShape, orgTranslateX, orgTranslateY,newTranslateX, newTranslateY);
                 currentShape.setOrigin(newTranslateX, newTranslateY);
                 drawing.repaint();
             }
@@ -67,6 +72,8 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
 
         if (event.getEventType().equals(MouseEvent.MOUSE_RELEASED)) 
         {
+        	if(currentShape != null)
+        		translateCommand.execute();
             currentShape = null;
         }
         

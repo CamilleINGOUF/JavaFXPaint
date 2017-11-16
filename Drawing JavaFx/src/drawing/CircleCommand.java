@@ -12,12 +12,17 @@ public class CircleCommand extends Command
 	public CircleCommand(Drawing drawing, Point2D origin, Point2D destination) 
 	{
 		super(drawing);
+		this.history = drawing.getCommandHistory();
 		this.origin = new Point2D(origin.getX(), origin.getY());
 		this.destination = new Point2D(destination.getX(), destination.getY());
 	}
 
-	public CircleCommand(CircleCommand circleCommand) {
-		//TODO faire ce contructeur
+	public CircleCommand(CircleCommand that) 
+	{
+		super(that.drawing);
+		this.history = that.history;
+		this.origin = new Point2D(that.origin.getX(), that.origin.getY());
+		this.destination = new Point2D(that.destination.getX(), that.destination.getY());
 	}
 
 	@Override
@@ -25,19 +30,22 @@ public class CircleCommand extends Command
 	{
 		circle = new Circle(origin, destination.distance(origin));
 		drawing.addShape(circle);
-        drawing.getCommandHistory().pushUndo(this);
+       	history.pushUndo(this);
+        history.clearRedos();
 	}
 
 	@Override
-	public void undo() {
-		// TODO Auto-generated method stub
-		
+	public void undo() 
+	{
+		drawing.remove(circle);
+		drawing.repaint();
 	}
 
 	@Override
-	public void redo() {
-		// TODO Auto-generated method stub
-		
+	public void redo() 
+	{
+		drawing.addShape(circle);
+		drawing.repaint();
 	}
 
 	@Override

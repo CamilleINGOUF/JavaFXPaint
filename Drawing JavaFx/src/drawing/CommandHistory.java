@@ -22,7 +22,7 @@ public class CommandHistory
 	
 	public void pushUndo(Command cmd)
 	{
-		undos.push(cmd.clone());
+		undos.push(cmd);
 	}
 	
 	public Command popRedo()
@@ -54,11 +54,11 @@ public class CommandHistory
 		
 		str+= "[Undos] ";
 		for(Command c : undos)
-			str+= c.getClass().getSimpleName()+" ";
+			str+= c+" ";
 		str+= "[/Undos]\n[Redos] ";
 		for(Command c : redos)
-			str+= c.getClass().getSimpleName()+" ";
-		str+= "[/Redos]";
+			str+= c+" ";
+		str+= "[/Redos]\n========================";
 		
 		return str;
 	}

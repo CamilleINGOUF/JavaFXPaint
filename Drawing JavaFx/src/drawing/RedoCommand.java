@@ -6,6 +6,13 @@ public class RedoCommand extends Command
 	public RedoCommand(Drawing drawing) 
 	{
 		super(drawing);
+		this.history = drawing.getCommandHistory();
+	}
+
+	public RedoCommand(RedoCommand that)
+	{
+		super(that.drawing);
+		this.history = that.history;
 	}
 
 	@Override
@@ -28,9 +35,14 @@ public class RedoCommand extends Command
 	}
 
 	@Override
-	public void redo() 
+	public void redo()
 	{
 		
+	}
+
+	@Override
+	public Command clone() {
+		return new RedoCommand(this);
 	}
 
 }

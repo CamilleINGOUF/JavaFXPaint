@@ -9,15 +9,27 @@ public class ClearCommand extends Command
 	public ClearCommand(Drawing drawing)
 	{
 		super(drawing);
+		this.history = drawing.getCommandHistory();
 		clearedShapes = new ArrayList<Shape>();
 	}
 	
+	public ClearCommand(ClearCommand that) 
+	{
+		super(that.drawing);
+		this.history = that.history;
+		this.clearedShapes = new ArrayList<Shape>();
+		for(Shape s : that.clearedShapes)
+			this.clearedShapes.add(s);
+	}
+
 	@Override
 	public void execute() 
 	{
 		saveShapes();
         
-		history.pushUndo(this);
+		history.pushUndo(this.clone());
+		clearedShapes.clear();
+        history.clearRedos();
 	}
 
 	@Override
@@ -38,6 +50,11 @@ public class ClearCommand extends Command
 		for(Shape s : drawing)
 			clearedShapes.add(s);
 		drawing.clear();
+	}
+
+	@Override
+	public Command clone() {
+		return new ClearCommand(this);
 	}
 	
 }
