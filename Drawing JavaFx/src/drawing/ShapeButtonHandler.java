@@ -16,6 +16,8 @@ public abstract class ShapeButtonHandler implements EventHandler<Event> {
     protected Point2D destination;
 
     protected Shape shape;
+    
+    protected Command shapeCommand;
 
     public ShapeButtonHandler(Drawing drawing) {
         this.drawing = drawing;
@@ -36,16 +38,14 @@ public abstract class ShapeButtonHandler implements EventHandler<Event> {
             }
 
             if (event.getEventType().equals(MouseEvent.MOUSE_RELEASED)) {
-                destination = new Point2D( ((MouseEvent)event).getX(), ((MouseEvent)event).getY());
-                shape = createShape();
-                drawing.addShape(shape);
+                destination = new Point2D( ((MouseEvent)event).getX(), ((MouseEvent)event).getY());                
+                createShape();
 
                 drawing.removeEventHandler(MouseEvent.MOUSE_PRESSED, this);
                 drawing.removeEventHandler(MouseEvent.MOUSE_RELEASED, this);
             }
         }
     }
-
-    protected abstract Shape createShape();
-
+    
+    public abstract void createShape();
 }

@@ -25,6 +25,9 @@ public class Paint extends Application{
     private Button ungroupButton;
     
     private Button duplicate;
+    
+    private Button undo;
+    private Button redo;
 
     public static void main(String[] args) {
         launch(Paint.class, args);
@@ -51,7 +54,7 @@ public class Paint extends Application{
         border.setTop(createButtonsBox());
         border.setBottom(new StatusBoxObserver(drawing).getStatusBox());
 
-        Scene scene = new Scene(border, 600, 400);
+        Scene scene = new Scene(border, 700, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -79,8 +82,14 @@ public class Paint extends Application{
         
         duplicate = new Button("Dupliquer");
         duplicate.addEventHandler(ActionEvent.ACTION, new DuplicateButtonHandler(drawing));
+        
+        undo = new Button("Undo");
+        undo.addEventHandler(ActionEvent.ACTION, new UndoButtonHandler(drawing));
+        
+        redo = new Button("Redo");
+        redo.addEventHandler(ActionEvent.ACTION, new RedoButtonHandler(drawing));
 
-        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton, duplicate);
+        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton, duplicate,undo,redo);
         return hbox;
     }
 }
