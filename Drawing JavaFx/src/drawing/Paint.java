@@ -28,6 +28,8 @@ public class Paint extends Application{
     
     private Button undo;
     private Button redo;
+    
+    private Button addTextButton;
 
     public static void main(String[] args) {
         launch(Paint.class, args);
@@ -54,7 +56,7 @@ public class Paint extends Application{
         border.setTop(createButtonsBox());
         border.setBottom(new StatusBoxObserver(drawing).getStatusBox());
 
-        Scene scene = new Scene(border, 700, 400);
+        Scene scene = new Scene(border, 800, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -88,8 +90,11 @@ public class Paint extends Application{
         
         redo = new Button("Redo");
         redo.addEventHandler(ActionEvent.ACTION, new RedoButtonHandler(drawing));
+        
+        addTextButton = new Button("Ajouter texte");
+        addTextButton.addEventHandler(ActionEvent.ACTION, new addTextButtonHandler(drawing));
 
-        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, groupButton, ungroupButton, duplicate,undo,redo);
+        hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
         return hbox;
     }
 }

@@ -75,4 +75,10 @@ public class CompositeShape extends Shape
 	{
 		return new CompositeShape(this);
 	}
+	
+	@Override
+	public boolean isSimple()
+	{
+		return false;
+	}
 }

@@ -3,7 +3,6 @@ package drawing;
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.InputEvent;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -63,7 +62,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
             for (Shape s : drawing) {
                 if (s.isOn(new Point2D(me.getX(), me.getY()))) 
                 {
-                    currentShape = s;
+                	currentShape = s;
                 }
             }
             if (currentShape != null) {

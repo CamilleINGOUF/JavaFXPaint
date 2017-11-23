@@ -49,4 +49,9 @@ public abstract class Shape
     }
     
     public abstract Shape clone();
+    
+    public boolean isSimple()
+    {
+    	return true;
+    }
 }

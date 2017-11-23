@@ -9,7 +9,7 @@ public class RectangleCommand extends Command
 	
 	private Rectangle rectangle;
 
-	public RectangleCommand(Drawing drawing, Point2D origin, Point2D destination) 
+	public RectangleCommand(Drawing drawing, Point2D origin, Point2D destination)
 	{
 		super(drawing);
 		this.history = drawing.getCommandHistory();
