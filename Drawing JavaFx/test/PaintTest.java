@@ -79,5 +79,41 @@ public class PaintTest extends ApplicationTest {
         // then:
         assertFalse(app.getDrawing().iterator().hasNext());
     }
+    
+    @Test
+    public void should_undo() {
+    	// given:
+    	clickOn("Rectangle");
+        moveBy(30,60).drag().dropBy(70,40);
+        clickOn("Cercle");
+        moveBy(-30,160).drag().dropBy(70,40);
+        
+        // when:
+        clickOn("Undo");
+        
+        // then:
+        Iterator it = app.getDrawing().iterator();
+        assertTrue(it.next() instanceof Rectangle);
+        assertFalse(it.hasNext());
+    }
+    
+    @Test
+    public void should_redo() {
+    	// given:
+    	clickOn("Rectangle");
+        moveBy(30,60).drag().dropBy(70,40);
+        clickOn("Cercle");
+        moveBy(-30,160).drag().dropBy(70,40);
+        clickOn("Undo");
+        
+        // when:
+        clickOn("Redo");
+        
+        // then:
+        Iterator it = app.getDrawing().iterator();
+        assertTrue(it.next() instanceof Rectangle);
+        assertTrue(it.next() instanceof Circle);
+        assertFalse(it.hasNext());
+    }
 
 }
