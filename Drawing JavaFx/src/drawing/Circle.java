@@ -46,4 +46,9 @@ public class Circle extends Shape
 	{
 		return new Circle(this);
 	}
+
+	@Override
+	public String toString() {
+		return new String("Circle[radius="+radius+"]");
+	}
 }

@@ -39,4 +39,9 @@ public class Text extends Shape {
 		return new Text(this);
 	}
 
+	@Override
+	public String toString() {
+		return new String("Text[]");
+	}
+
 }

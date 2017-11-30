@@ -45,4 +45,9 @@ public class Rectangle extends Shape {
 	{
 		return new Rectangle(this);
 	}
+
+	@Override
+	public String toString() {
+		return new String("Rectangle[width="+width+",height="+height+"]");
+	}
 }

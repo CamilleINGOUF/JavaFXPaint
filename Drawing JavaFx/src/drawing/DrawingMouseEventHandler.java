@@ -51,6 +51,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         			s.setSelected(false);
         	}
         	currentShape.setSelected(true);
+        	drawing.notifyObservers();
         }
 
         if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 

@@ -44,4 +44,9 @@ public class TextShapeDecorator extends ShapeDecorator {
 		return new TextShapeDecorator(this);
 	}
 
+	@Override
+	public String toString() {
+		return new String("TextShapeDecorator[]");
+	}
+
 }

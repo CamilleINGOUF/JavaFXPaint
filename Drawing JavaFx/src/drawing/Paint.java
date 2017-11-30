@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -99,13 +98,18 @@ public class Paint extends Application{
         return hbox;
     }
     
-    private HBox createStatusBox() 
+    private HBox createStatusBox()
     {
     	HBox hbox = new HBox();
     	hbox.setPadding(new Insets(15, 12, 15, 12));
         hbox.setSpacing(10);
         hbox.setStyle("-fx-background-color: #336699;");
-     
+        
+        StatusObserver status = new StatusObserver(drawing);
+        hbox.getChildren().add(status);
+        
+        SelectedShapesObserver selectedObs = new SelectedShapesObserver(drawing);
+        hbox.getChildren().add(selectedObs);
         
         return hbox;
     }

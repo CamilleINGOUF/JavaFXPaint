@@ -8,10 +8,8 @@ public class StatusObserver extends Text implements Observer
 {	
 	private Drawing drawing;
 	
-	public StatusObserver(Drawing drawing)
-	{
-        this.setStyle("-fx-background-color: #336699;");
-        
+	public StatusObserver(Drawing drawing) {
+		
         setText("Shape(s) : 0");
         
         this.drawing = drawing;

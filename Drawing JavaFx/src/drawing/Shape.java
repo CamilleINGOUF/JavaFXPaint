@@ -54,4 +54,7 @@ public abstract class Shape
     {
     	return true;
     }
+    
+    @Override
+    public abstract String toString();
 }

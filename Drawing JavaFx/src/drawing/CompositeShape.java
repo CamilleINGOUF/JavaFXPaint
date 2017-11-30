@@ -81,4 +81,9 @@ public class CompositeShape extends Shape
 	{
 		return false;
 	}
+
+	@Override
+	public String toString() {
+		return new String("Group[size="+shapes.size()+"]");
+	}
 }
