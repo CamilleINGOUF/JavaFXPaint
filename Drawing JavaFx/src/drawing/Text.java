@@ -8,9 +8,9 @@ public class Text extends Shape {
 
 	private String text;
 	
-	public Text(Point2D origin) {
+	public Text(Point2D origin, String text) {
 		super(origin);
-		text = new String("TEST");
+		text = new String(text);
 	}
 
 	public Text(Text that) {

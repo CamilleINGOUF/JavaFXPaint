@@ -92,7 +92,7 @@ public class Paint extends Application{
         redo.addEventHandler(ActionEvent.ACTION, new RedoButtonHandler(drawing));
         
         addTextButton = new Button("Ajouter texte");
-        addTextButton.addEventHandler(ActionEvent.ACTION, new addTextButtonHandler(drawing));
+        addTextButton.addEventHandler(ActionEvent.ACTION, new TextButtonHandler(drawing));
 
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
         return hbox;

@@ -51,6 +51,8 @@ public class DegroupCommand extends Command
 		for(Shape s : shapesTemp)
 			drawing.addShape(s);
      	history.pushUndo(this);
+        targets.clear();
+        group = null;
      	history.clearRedos();
 	}
 

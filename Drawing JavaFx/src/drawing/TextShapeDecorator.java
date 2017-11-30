@@ -7,13 +7,19 @@ public class TextShapeDecorator extends ShapeDecorator {
 	
 	private Text text;
 
-	public TextShapeDecorator(Point2D origin, Shape decoratedShape) {
+	public TextShapeDecorator(Point2D origin, Shape decoratedShape, String text) {
 		super(origin, decoratedShape);
-		text = new Text(origin);
+		this.text = new Text(origin, text);
 	}
 
-	public TextShapeDecorator(ShapeDecorator that) {
+	public TextShapeDecorator(TextShapeDecorator that) {
 		super(that);
+		this.text = that.text;
+	}
+	
+	public void setText(String txt)
+	{
+		text.setText(txt);
 	}
 	
 	@Override

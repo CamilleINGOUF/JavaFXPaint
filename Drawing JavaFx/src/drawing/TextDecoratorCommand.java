@@ -2,10 +2,12 @@ package drawing;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 public class TextDecoratorCommand extends Command {
 	
 	private ArrayList<TextShapeDecorator> decorators;
-	ArrayList<Shape> oldShapes;
+	private ArrayList<Shape> oldShapes;
 
 	public TextDecoratorCommand(Drawing drawing) {
 		super(drawing);
@@ -20,11 +22,24 @@ public class TextDecoratorCommand extends Command {
 			if(shape.isSimple())
 			{
 				if(shape.isSelected()) {
-					decorators.add(new TextShapeDecorator(shape.origin, shape));
+					decorators.add(new TextShapeDecorator(shape.origin, shape, ""));
 					oldShapes.add(shape);
 				}
 			}
 		}
+		
+		if(decorators.isEmpty())
+			return;
+		
+		String s;
+		do {
+			s = JOptionPane.showInputDialog(
+					"What do you want to write ?");
+		}while(s == null || s.length() <= 0);
+		
+		for(TextShapeDecorator tsd : decorators)
+			tsd.setText(s);
+		
 		for(int i = 0; i < decorators.size(); i++)
 		{
 			drawing.addShape(decorators.get(i));
@@ -38,18 +53,22 @@ public class TextDecoratorCommand extends Command {
 
 	@Override
 	public void undo() {
-		//TODO
+		for(TextShapeDecorator tsd : decorators)
+			drawing.remove(tsd);
+		for(Shape s : oldShapes)
+			drawing.addShape(s);
 	}
 
 	@Override
 	public void redo() {
-		// TODO Auto-generated method stub
-
+		for(TextShapeDecorator tsd : decorators)
+			drawing.addShape(tsd);
+		for(Shape s : oldShapes)
+			drawing.remove(s);
 	}
 
 	@Override
 	public Command clone() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

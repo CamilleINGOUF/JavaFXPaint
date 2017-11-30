@@ -3,13 +3,13 @@ package drawing;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class addTextButtonHandler implements EventHandler<ActionEvent> {
+public class TextButtonHandler implements EventHandler<ActionEvent> {
 
 	private Drawing drawing;
 	
 	protected TextDecoratorCommand textCommand;
 	
-	public addTextButtonHandler(Drawing drawing) {
+	public TextButtonHandler(Drawing drawing) {
 		this.drawing = drawing;
 	}
 	
