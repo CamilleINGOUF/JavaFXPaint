@@ -17,7 +17,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
 
     ArrayList<Shape> shapes;
     
-    private ArrayList<StatusObserver> observers;
+    private ArrayList<Observer> observers;
     
     private CommandHistory commandHistory;
 
@@ -30,7 +30,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         this.addEventHandler(MouseEvent.MOUSE_DRAGGED, handler);
         this.addEventHandler(MouseEvent.MOUSE_RELEASED, handler);
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
-        observers = new ArrayList<StatusObserver>();
+        observers = new ArrayList<Observer>();
         commandHistory = new CommandHistory();
     }
 
@@ -94,14 +94,14 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         return true;
     }
     
-    public void registerObserver(StatusObserver s)
+    public void registerObserver(Observer s)
     {
     	observers.add(s);
     }
     
     public void notifyObservers()
     {
-    	for(StatusObserver s : observers)
+    	for(Observer s : observers)
     		s.updateStatus();
     }
 }

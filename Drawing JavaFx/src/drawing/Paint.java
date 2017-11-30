@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -54,7 +55,7 @@ public class Paint extends Application{
         border.setCenter(middleBox);
 
         border.setTop(createButtonsBox());
-        border.setBottom(new StatusBoxObserver(drawing).getStatusBox());
+        border.setBottom(createStatusBox());
 
         Scene scene = new Scene(border, 800, 400);
         primaryStage.setScene(scene);
@@ -95,6 +96,17 @@ public class Paint extends Application{
         addTextButton.addEventHandler(ActionEvent.ACTION, new TextButtonHandler(drawing));
 
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
+        return hbox;
+    }
+    
+    private HBox createStatusBox() 
+    {
+    	HBox hbox = new HBox();
+    	hbox.setPadding(new Insets(15, 12, 15, 12));
+        hbox.setSpacing(10);
+        hbox.setStyle("-fx-background-color: #336699;");
+     
+        
         return hbox;
     }
 }
