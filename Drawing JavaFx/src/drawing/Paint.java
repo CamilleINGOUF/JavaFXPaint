@@ -3,8 +3,11 @@ package drawing;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -30,6 +33,9 @@ public class Paint extends Application{
     private Button redo;
     
     private Button addTextButton;
+    
+    private Button rearrange;
+    private ComboBox<String> listAlgoRearrange;
 
     public static void main(String[] args) {
         launch(Paint.class, args);
@@ -56,7 +62,7 @@ public class Paint extends Application{
         border.setTop(createButtonsBox());
         border.setBottom(createStatusBox());
 
-        Scene scene = new Scene(border, 800, 400);
+        Scene scene = new Scene(border, 1000, 600);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -93,8 +99,20 @@ public class Paint extends Application{
         
         addTextButton = new Button("Ajouter texte");
         addTextButton.addEventHandler(ActionEvent.ACTION, new TextButtonHandler(drawing));
-
+        
+        rearrange = new Button("Réarranger");
+        rearrange.addEventHandler(ActionEvent.ACTION, new RearrangeButtonHandler(drawing));
+        
+        String[] elements = new String[]{"Grille", "Aléatoire", "Vertical"};
+        listAlgoRearrange = new ComboBox<>();
+        listAlgoRearrange.getItems().addAll(elements);
+        listAlgoRearrange.getSelectionModel().selectFirst();
+        
+        Separator sep = new Separator(Orientation.VERTICAL);
+        
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
+        hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange);
+        
         return hbox;
     }
     
