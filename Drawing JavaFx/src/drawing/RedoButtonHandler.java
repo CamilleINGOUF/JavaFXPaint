@@ -15,7 +15,12 @@ public class RedoButtonHandler implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) 
 	{
-		redoCommand.execute();
+		try {
+			redoCommand.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

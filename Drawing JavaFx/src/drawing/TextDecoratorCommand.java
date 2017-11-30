@@ -16,15 +16,15 @@ public class TextDecoratorCommand extends Command {
 	}
 
 	@Override
-	public void execute() {
+	public void execute() throws DrawingException {
 		for(Shape shape : drawing)
 		{
-			if(shape.isSimple())
-			{
-				if(shape.isSelected()) {
-					decorators.add(new TextShapeDecorator(shape.origin, shape, ""));
-					oldShapes.add(shape);
+			if(shape.isSelected()) {
+				if(!shape.isSimple()) {
+					throw new DrawingException("Tryed to add text on a group of shapes.");
 				}
+				decorators.add(new TextShapeDecorator(shape.origin, shape, ""));
+				oldShapes.add(shape);
 			}
 		}
 		
@@ -35,7 +35,7 @@ public class TextDecoratorCommand extends Command {
 		do {
 			s = JOptionPane.showInputDialog(
 					"What do you want to write ?");
-		}while(s == null || s.length() <= 0);
+		}while(s == null);
 		
 		for(TextShapeDecorator tsd : decorators)
 			tsd.setText(s);

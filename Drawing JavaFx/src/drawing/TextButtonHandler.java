@@ -16,7 +16,11 @@ public class TextButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		textCommand = new TextDecoratorCommand(drawing);
-		textCommand.execute();
+		try {
+			textCommand.execute();
+		} catch (DrawingException e) {
+			System.err.println(e.getMessage());
+		}
 	}
 
 }

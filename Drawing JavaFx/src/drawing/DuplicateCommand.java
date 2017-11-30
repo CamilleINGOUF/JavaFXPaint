@@ -23,7 +23,7 @@ public class DuplicateCommand extends Command
 	}
 
 	@Override
-	public void execute() 
+	public void execute() throws Exception 
 	{
 		ArrayList<Shape> sh = new ArrayList<Shape>();
 		for(Shape s : drawing)

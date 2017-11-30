@@ -13,6 +13,11 @@ public class CircleButtonHandler extends ShapeButtonHandler
 	public void createShape() 
 	{
         shapeCommand = new CircleCommand(drawing,origin,destination);
-        shapeCommand.execute();
+        try {
+			shapeCommand.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

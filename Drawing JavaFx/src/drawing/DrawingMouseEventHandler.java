@@ -96,7 +96,12 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
             newTranslateY = orgTranslateY + offsetY;
         	if(currentShape != null && offsetX != 0 && offsetY != 0) {
         		translateCommand = new TranslateCommand(drawing, currentShape, orgTranslateX, orgTranslateY,newTranslateX, newTranslateY);
-        		translateCommand.execute();
+        		try {
+					translateCommand.execute();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
         	}
             currentShape = null;
         }

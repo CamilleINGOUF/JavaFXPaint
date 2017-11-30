@@ -15,7 +15,11 @@ public class FreeShapeHandler  implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) 
 	{
-		degroupCommand.execute();
+		try {
+			degroupCommand.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

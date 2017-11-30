@@ -23,7 +23,7 @@ public class ClearCommand extends Command
 	}
 
 	@Override
-	public void execute() 
+	public void execute() throws Exception 
 	{
 		saveShapes();
         

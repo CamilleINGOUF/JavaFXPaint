@@ -15,6 +15,11 @@ public class DuplicateButtonHandler implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) 
 	{
-		duplicateCommand.execute();
+		try {
+			duplicateCommand.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

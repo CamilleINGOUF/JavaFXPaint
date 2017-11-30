@@ -26,7 +26,7 @@ public class GroupCommand extends Command
 	}
 
 	@Override
-	public void execute() 
+	public void execute() throws Exception 
 	{	
 		if(drawing.getSelectedShapes().size() == 0)
 			return;

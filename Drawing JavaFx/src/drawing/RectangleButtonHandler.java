@@ -13,6 +13,11 @@ public class RectangleButtonHandler extends ShapeButtonHandler
 	public void createShape() 
 	{
 		shapeCommand = new RectangleCommand(drawing, origin, destination);	
-		shapeCommand.execute();
+		try {
+			shapeCommand.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

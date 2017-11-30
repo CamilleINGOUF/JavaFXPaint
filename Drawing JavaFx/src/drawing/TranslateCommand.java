@@ -32,7 +32,7 @@ public class TranslateCommand extends Command {
 	}
 
 	@Override
-	public void execute() 
+	public void execute() throws Exception 
 	{
         target.setOrigin(tx, ty);
         drawing.repaint();

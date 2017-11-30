@@ -26,7 +26,7 @@ public class CircleCommand extends Command
 	}
 
 	@Override
-	public void execute() 
+	public void execute() throws Exception 
 	{
 		circle = new Circle(origin, destination.distance(origin));
 		drawing.addShape(circle);

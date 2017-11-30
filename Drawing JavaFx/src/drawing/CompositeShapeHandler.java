@@ -15,6 +15,11 @@ public class CompositeShapeHandler implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) 
 	{	
-		groupCommand.execute();
+		try {
+			groupCommand.execute();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -25,7 +25,7 @@ public class RectangleCommand extends Command
 		this.destination = new Point2D(that.destination.getX(), that.destination.getY());
 	}
 
-	public void execute()
+	public void execute() throws Exception
 	{
 		double x = Math.min(origin.getX(),destination.getX());
         double y = Math.min(origin.getY(),destination.getY());

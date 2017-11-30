@@ -15,7 +15,11 @@ public class UndoButtonHandler implements EventHandler<ActionEvent>
 	@Override
 	public void handle(ActionEvent event) 
 	{
-		undoCommand.execute();
+		try {
+			undoCommand.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
