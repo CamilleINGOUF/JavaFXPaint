@@ -12,12 +12,12 @@ public class DegroupCommand extends Command
 	{
 		super(drawing);
 		targets = new ArrayList<Shape>();
+		this.history = drawing.getCommandHistory();
 	}
 
 	public DegroupCommand(DegroupCommand that) 
 	{
 		super(that.drawing);
-		this.history = drawing.getCommandHistory();
 		this.history = that.history;
 		targets = new ArrayList<Shape>();
 		for(Shape s : that.targets)
