@@ -16,3 +16,9 @@ A paint-like software, letting us place circle or rectangle of a choosen size. H
 - Composite -> Make group of Shapes
 - Command -> Undo/Redo
 - Strategy -> Add multiple algorithms to place drawn shapes in a special way (Grid / Random / Horizontal / etc...)
+
+## Project Informations
+Master 1 ISIDIS - 2017
+Student : Camille INGOUF
+Teacher : Arnaud LEWANDOWSKI
+Course : Advanced Object Oriented Development
