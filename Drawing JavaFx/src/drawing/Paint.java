@@ -100,13 +100,15 @@ public class Paint extends Application{
         addTextButton = new Button("Ajouter texte");
         addTextButton.addEventHandler(ActionEvent.ACTION, new TextButtonHandler(drawing));
         
-        rearrange = new Button("Réarranger");
-        rearrange.addEventHandler(ActionEvent.ACTION, new RearrangeButtonHandler(drawing));
-        
-        String[] elements = new String[]{"Grille", "Aléatoire", "Vertical"};
+        String[] elements = new String[]{"Grid", "Random", "Vertical","Sort"};
         listAlgoRearrange = new ComboBox<>();
         listAlgoRearrange.getItems().addAll(elements);
         listAlgoRearrange.getSelectionModel().selectFirst();
+
+        rearrange = new Button("Réarranger");
+        RearrangeButtonHandler rearrangeHandler = new RearrangeButtonHandler(drawing);
+        rearrangeHandler.setComboBox(listAlgoRearrange);
+        rearrange.addEventHandler(ActionEvent.ACTION, rearrangeHandler);
         
         Separator sep = new Separator(Orientation.VERTICAL);
         

@@ -4,9 +4,9 @@ public class RearrangeCommand extends Command {
 	
 	private RearrangeStrategy strat;
 
-	public RearrangeCommand(Drawing drawing) {
+	public RearrangeCommand(Drawing drawing, RearrangeStrategy strategy) {
 		super(drawing);
-		strat = new RearrangeGridStrategy();
+		strat = strategy.clone();
 		this.history = drawing.getCommandHistory();
 	}
 
@@ -33,10 +33,10 @@ public class RearrangeCommand extends Command {
 
 	@Override
 	public void redo() {
-		for(Shape s : strat.getNews())
-			drawing.addShape(s);
 		for(Shape s : strat.getOlds())
 			drawing.remove(s);
+		for(Shape s : strat.getNews())
+			drawing.addShape(s);
 	}
 
 	@Override
