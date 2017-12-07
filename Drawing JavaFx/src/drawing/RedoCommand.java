@@ -18,6 +18,7 @@ public class RedoCommand extends Command
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
 		Command cmd = history.popRedo();
 		if(cmd != null)
 		{

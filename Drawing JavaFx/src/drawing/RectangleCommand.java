@@ -27,6 +27,7 @@ public class RectangleCommand extends Command
 
 	public void execute() throws Exception
 	{
+		super.execute();
 		double x = Math.min(origin.getX(),destination.getX());
         double y = Math.min(origin.getY(),destination.getY());
         double width = Math.abs(destination.getX()-origin.getX());

@@ -17,6 +17,7 @@ public class UndoCommand extends Command
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
 		Command cmd = history.popUndo();
 		if(cmd != null)
 		{

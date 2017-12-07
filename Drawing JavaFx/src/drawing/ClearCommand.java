@@ -25,6 +25,7 @@ public class ClearCommand extends Command
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
 		saveShapes();
         
 		history.pushUndo(this.clone());

@@ -16,7 +16,8 @@ public class TextDecoratorCommand extends Command {
 	}
 
 	@Override
-	public void execute() throws DrawingException {
+	public void execute() throws Exception {
+		super.execute();
 		for(Shape shape : drawing)
 		{
 			if(shape.isSelected()) {

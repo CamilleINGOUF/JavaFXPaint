@@ -18,8 +18,8 @@ public class TextButtonHandler implements EventHandler<ActionEvent> {
 		textCommand = new TextDecoratorCommand(drawing);
 		try {
 			textCommand.execute();
-		} catch (DrawingException e) {
-			System.err.println(e.getMessage());
+		} catch (Exception e) {
+			StatusExceptionSingleton.getInstance().sendError("Can't add text on a group of shapes !");
 		}
 	}
 

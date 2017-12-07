@@ -27,6 +27,7 @@ public class DegroupCommand extends Command
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
 		ArrayList<Shape> shapesTemp = new ArrayList<Shape>();
 		for(int  i = 0; i < drawing.getSelectedShapes().size(); i++)
 		{

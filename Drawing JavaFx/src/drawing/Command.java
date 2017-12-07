@@ -11,7 +11,9 @@ public abstract class Command
 		this.history = drawing.getCommandHistory();
 	}
 	
-	public abstract void execute() throws Exception;
+	public void execute() throws Exception {
+		StatusExceptionSingleton.getInstance().hide();
+	}
 	
 	public abstract void undo();
 	

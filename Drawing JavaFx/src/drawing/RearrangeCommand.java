@@ -18,6 +18,7 @@ public class RearrangeCommand extends Command {
 
 	@Override
 	public void execute() throws Exception {
+		super.execute();
 		strat.rearrange(drawing);
 		history.pushUndo(this.clone());
 		strat.clear();

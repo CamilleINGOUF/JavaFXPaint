@@ -28,6 +28,7 @@ public class CircleCommand extends Command
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
 		circle = new Circle(origin, destination.distance(origin));
 		drawing.addShape(circle);
        	history.pushUndo(this);

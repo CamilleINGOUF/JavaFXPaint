@@ -36,6 +36,8 @@ public class Paint extends Application{
     
     private Button rearrange;
     private ComboBox<String> listAlgoRearrange;
+    
+    StatusExceptionSingleton errorBox;
 
     public static void main(String[] args) {
         launch(Paint.class, args);
@@ -48,6 +50,7 @@ public class Paint extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception 
     {	
+    	errorBox = StatusExceptionSingleton.getInstance();
         primaryStage.setTitle("Première application JavaFx");
         BorderPane border = new BorderPane();
 
@@ -60,9 +63,13 @@ public class Paint extends Application{
         border.setCenter(middleBox);
 
         border.setTop(createButtonsBox());
-        border.setBottom(createStatusBox());
+        
+        VBox bottomBox = new VBox();
+        bottomBox.getChildren().add(errorBox);
+        bottomBox.getChildren().add(createStatusBox());
+        border.setBottom(bottomBox);
 
-        Scene scene = new Scene(border, 1000, 600);
+        Scene scene = new Scene(border, 1000, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

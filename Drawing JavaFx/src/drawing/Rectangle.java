@@ -36,8 +36,8 @@ public class Rectangle extends Shape {
 
     @Override
     public boolean isOn(Point2D p) {
-        return (p.getX() > origin.getX() && p.getX() < origin.getX()+width &&
-                p.getY() > origin.getY() && p.getY() < origin.getY()+height);
+        return (p.getX() > origin.getX()-width/2 && p.getX() < origin.getX()+width/2 &&
+                p.getY() > origin.getY()-height/2 && p.getY() < origin.getY()+height/2);
     }
 
 	@Override

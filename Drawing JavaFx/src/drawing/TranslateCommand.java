@@ -34,6 +34,7 @@ public class TranslateCommand extends Command {
 	@Override
 	public void execute() throws Exception 
 	{
+		super.execute();
         target.setOrigin(tx, ty);
         drawing.repaint();
         history.pushUndo(this.clone());
