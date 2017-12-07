@@ -30,8 +30,8 @@ public class Rectangle extends Shape {
         gc.setFill(Color.GREENYELLOW);
         gc.setStroke(Color.GREEN);
         gc.setLineWidth(3);
-        gc.fillRect(origin.getX(), origin.getY(), width, height);
-        gc.strokeRect(origin.getX(), origin.getY(), width, height);
+        gc.fillRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
+        gc.strokeRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
     }
 
     @Override
