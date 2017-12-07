@@ -33,6 +33,10 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         observers = new ArrayList<Observer>();
         commandHistory = new CommandHistory();
     }
+    
+    public DrawingMouseEventHandler getHandler() {
+    	return handler;
+    }
 
     @Override
     public Iterator<Shape> iterator() 
@@ -99,7 +103,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     	observers.add(s);
     }
     
-    public void notifyObservers()
+    private void notifyObservers()
     {
     	for(Observer s : observers)
     		s.updateStatus();

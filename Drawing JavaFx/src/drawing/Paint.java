@@ -29,8 +29,8 @@ public class Paint extends Application{
     
     private Button duplicate;
     
-    private Button undo;
-    private Button redo;
+    private UndoButton undo;
+    private RedoButton redo;
     
     private Button addTextButton;
     
@@ -91,10 +91,10 @@ public class Paint extends Application{
         duplicate = new Button("Dupliquer");
         duplicate.addEventHandler(ActionEvent.ACTION, new DuplicateButtonHandler(drawing));
         
-        undo = new Button("Undo");
+        undo = new UndoButton(drawing);
         undo.addEventHandler(ActionEvent.ACTION, new UndoButtonHandler(drawing));
         
-        redo = new Button("Redo");
+        redo = new RedoButton(drawing);
         redo.addEventHandler(ActionEvent.ACTION, new RedoButtonHandler(drawing));
         
         addTextButton = new Button("Ajouter texte");
@@ -128,7 +128,7 @@ public class Paint extends Application{
         StatusObserver status = new StatusObserver(drawing);
         hbox.getChildren().add(status);
         
-        SelectedShapesObserver selectedObs = new SelectedShapesObserver(drawing);
+        SelectedShapesObserver selectedObs = new SelectedShapesObserver(drawing, drawing.getHandler());
         hbox.getChildren().add(selectedObs);
         
         return hbox;

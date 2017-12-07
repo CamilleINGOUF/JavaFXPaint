@@ -1,5 +1,7 @@
 package drawing;
 
+import java.util.ArrayList;
+
 import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.input.InputEvent;
@@ -19,6 +21,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
 
     private Shape currentShape;
     
+    private ArrayList<Observer> observers;
     
     private TranslateCommand translateCommand;
     
@@ -27,6 +30,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
 
     public DrawingMouseEventHandler(Drawing drawing) {
         this.drawing = drawing;
+        observers = new ArrayList<Observer>();
     }
     
     public void handle(InputEvent event)
@@ -51,7 +55,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         			s.setSelected(false);
         	}
         	currentShape.setSelected(true);
-        	drawing.notifyObservers();
+        	notifyObservers();
         }
 
         if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 
@@ -106,5 +110,16 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         	}
             currentShape = null;
         }
+    }
+    
+    public void registerObserver(Observer s)
+    {
+    	observers.add(s);
+    }
+    
+    private void notifyObservers()
+    {
+    	for(Observer s : observers)
+    		s.updateStatus();
     }
 }

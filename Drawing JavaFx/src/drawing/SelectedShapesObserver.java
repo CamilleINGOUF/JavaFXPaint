@@ -6,10 +6,10 @@ public class SelectedShapesObserver extends Text implements Observer {
 
 	private Drawing drawing;
 	
-	public SelectedShapesObserver(Drawing drawing) {
+	public SelectedShapesObserver(Drawing drawing, DrawingMouseEventHandler handler) {
 		
 		this.drawing = drawing;
-		drawing.registerObserver(this);
+		handler.registerObserver(this);
 		setText("");
 	}
 	
