@@ -1,47 +1,24 @@
 package drawing;
 
-import java.util.ArrayList;
-
 import com.google.common.collect.Iterators;
 
-public class RearrangeGridStrategy implements RearrangeStrategy {
-
-	private ArrayList<Shape> oldShapes;
-	private ArrayList<Shape> newShapes;
+public class RearrangeGridStrategy extends RearrangeStrategy {
 
 	public RearrangeGridStrategy() {
-		oldShapes = new ArrayList<>();
-		newShapes = new ArrayList<>();
+		super();
 	}
 
 	public RearrangeGridStrategy(RearrangeGridStrategy that) {
-		oldShapes = new ArrayList<>();
-		newShapes = new ArrayList<>();
-		for(Shape s : that.newShapes)
-			newShapes.add(s);
-		for(Shape s : that.oldShapes)
-			oldShapes.add(s);
+		super(that);
 	}
 
-	public ArrayList<Shape> getOlds() {
-		return oldShapes;
-	}
-
-	public ArrayList<Shape> getNews() {
-		return newShapes;
-	}
-	public void clear() {
-		oldShapes.clear();
-		newShapes.clear();
-	}
-
+	@Override
 	public RearrangeGridStrategy clone() {
 		return new RearrangeGridStrategy(this);
 	}
 
 	@Override
 	public void rearrange(Drawing drawing) {
-		System.out.println("Rearrange - grid");
 		int numberShapes = Iterators.size(drawing.iterator());
 		int column = 0;
 		int line = 0;

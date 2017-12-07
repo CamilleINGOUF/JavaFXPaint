@@ -2,15 +2,39 @@ package drawing;
 
 import java.util.ArrayList;
 
-public interface RearrangeStrategy {
-	
-	public void rearrange(Drawing drawing);
+public abstract class RearrangeStrategy {
 
-	public RearrangeStrategy clone();
+	protected ArrayList<Shape> oldShapes;
+	protected ArrayList<Shape> newShapes;
 	
-	public ArrayList<Shape> getNews();
+	public RearrangeStrategy() {
+		oldShapes = new ArrayList<>();
+		newShapes = new ArrayList<>();
+	}
 	
-	public ArrayList<Shape> getOlds();
+	public RearrangeStrategy(RearrangeStrategy that) {
+		oldShapes = new ArrayList<>();
+		newShapes = new ArrayList<>();
+		for(Shape s : that.newShapes)
+			newShapes.add(s);
+		for(Shape s : that.oldShapes)
+			oldShapes.add(s);
+	}
 	
-	public void clear();
+	public ArrayList<Shape> getNews() {
+		return newShapes;
+	}
+	
+	public ArrayList<Shape> getOlds() {
+		return oldShapes;
+	}
+
+	public void clear() {
+		oldShapes.clear();
+		newShapes.clear();
+	}
+
+	public abstract RearrangeStrategy clone();
+	
+	public abstract void rearrange(Drawing drawing);
 }
