@@ -17,8 +17,6 @@ public class StatusExceptionSingleton extends HBox{
 		this.setStyle("-fx-background-color: #990000;");
 		this.setSpacing(10);
 		this.setPadding(new Insets(8, 12, 8, 12));
-
-		
 		this.getChildren().add(error);
 	}
 	
