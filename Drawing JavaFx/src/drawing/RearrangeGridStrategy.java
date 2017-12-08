@@ -22,6 +22,8 @@ public class RearrangeGridStrategy extends RearrangeStrategy {
 		int numberShapes = Iterators.size(drawing.iterator());
 		int column = 0;
 		int line = 0;
+		double widest = 0;
+		double tallest = 0;
 
 		boolean uneven = numberShapes % 2 == 1;
 
@@ -42,6 +44,11 @@ public class RearrangeGridStrategy extends RearrangeStrategy {
 		for(Shape s :  drawing) {
 			oldShapes.add(s);
 			newShapes.add(s.clone());
+			if(s.getHeight() > tallest) 
+				tallest = s.getHeight();
+				
+			if(s.getWidth() > widest)
+				widest = s.getWidth();
 		}
 
 		for(int i = 0; i < oldShapes.size(); i++) {
@@ -52,7 +59,7 @@ public class RearrangeGridStrategy extends RearrangeStrategy {
 		for(int i = 0; i < line; i++) {
 			for(int j = 0; j < column; j++) {
 				if(index < numberShapes) {
-					newShapes.get(index).setOrigin(i * 150 + 100, j * 150 + 100);
+					newShapes.get(index).setOrigin(i * widest + 100, j * tallest + 100);
 					drawing.addShape(newShapes.get(index));
 				}
 				index++;

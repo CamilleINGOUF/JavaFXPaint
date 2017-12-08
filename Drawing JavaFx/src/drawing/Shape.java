@@ -55,6 +55,10 @@ public abstract class Shape
     	return true;
     }
     
+    public abstract double getHeight();
+    
+    public abstract double getWidth();
+    
     @Override
     public abstract String toString();
 }

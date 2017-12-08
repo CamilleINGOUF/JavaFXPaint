@@ -44,4 +44,14 @@ public class Text extends Shape {
 		return new String("Text[]");
 	}
 
+	@Override
+	public double getHeight() {
+		return 0;
+	}
+
+	@Override
+	public double getWidth() {
+		return 0;
+	}
+
 }

@@ -86,4 +86,14 @@ public class CompositeShape extends Shape
 	public String toString() {
 		return new String("Group[size="+shapes.size()+"]");
 	}
+
+	@Override
+	public double getHeight() {
+		return 0;
+	}
+
+	@Override
+	public double getWidth() {
+		return 0;
+	}
 }

@@ -51,4 +51,14 @@ public class Circle extends Shape
 	public String toString() {
 		return new String("Circle[radius="+radius+"]");
 	}
+
+	@Override
+	public double getHeight() {
+		return radius*2;
+	}
+
+	@Override
+	public double getWidth() {
+		return radius*2;
+	}
 }

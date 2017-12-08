@@ -50,4 +50,14 @@ public class Rectangle extends Shape {
 	public String toString() {
 		return new String("Rectangle[width="+width+",height="+height+"]");
 	}
+
+	@Override
+	public double getHeight() {
+		return height;
+	}
+
+	@Override
+	public double getWidth() {
+		return width;
+	}
 }

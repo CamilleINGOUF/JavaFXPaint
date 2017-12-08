@@ -49,4 +49,14 @@ public class TextShapeDecorator extends ShapeDecorator {
 		return new String("TextShapeDecorator[]");
 	}
 
+	@Override
+	public double getHeight() {
+		return 0;
+	}
+
+	@Override
+	public double getWidth() {
+		return 0;
+	}
+
 }
