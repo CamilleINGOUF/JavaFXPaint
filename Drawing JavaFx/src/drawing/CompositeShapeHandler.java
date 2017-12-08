@@ -18,8 +18,7 @@ public class CompositeShapeHandler implements EventHandler<ActionEvent>
 		try {
 			groupCommand.execute();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			StatusExceptionSingleton.getInstance().sendError("No Shape selected");
 		}
 	}
 }

@@ -30,7 +30,7 @@ public class GroupCommand extends Command
 	{	
 		super.execute();
 		if(drawing.getSelectedShapes().size() == 0)
-			return;
+			throw new Exception("No Shape selected");
 		
 		double x = drawing.getSelectedShapes().get(0).getOrigin().getX();
 		double y = drawing.getSelectedShapes().get(0).getOrigin().getY();
