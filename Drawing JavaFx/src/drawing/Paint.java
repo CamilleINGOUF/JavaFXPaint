@@ -19,7 +19,7 @@ import javafx.stage.Stage;
  */
 public class Paint extends Application{
 
-    private Drawing drawing;
+    private Drawing drawing; 
     private ClearButton clearButton;
     private Button circleButton;
     private Button rectangleButton;
