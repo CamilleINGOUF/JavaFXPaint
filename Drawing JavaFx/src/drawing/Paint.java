@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class Paint extends Application{
 
     private Drawing drawing;
-    private Button clearButton;
+    private ClearButton clearButton;
     private Button circleButton;
     private Button rectangleButton;
     
@@ -80,7 +80,7 @@ public class Paint extends Application{
         hbox.setSpacing(10);
         hbox.setStyle("-fx-background-color: #336699;");
 
-        clearButton = new Button("Clear");
+        clearButton = new ClearButton(drawing);
         clearButton.setOnAction(new ClearButtonHandler(drawing));
 
         circleButton = new Button("Cercle");

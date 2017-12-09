@@ -59,6 +59,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     public void remove(Shape s)
     {
     	shapes.remove(s);
+    	notifyObservers();
     }
     
     public ArrayList<Shape> getShapes()
