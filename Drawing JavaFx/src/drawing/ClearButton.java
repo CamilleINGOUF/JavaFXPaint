@@ -10,7 +10,7 @@ public class ClearButton extends Button implements Observer {
 		super("Clear");
 		this.drawing = drawing;
         this.drawing.registerObserver(this);
-		this.setDisable(true);
+		this.setDisable(true); 
 	}
 
 	@Override
