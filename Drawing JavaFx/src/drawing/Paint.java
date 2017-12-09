@@ -24,7 +24,7 @@ public class Paint extends Application{
     private Button circleButton;
     private Button rectangleButton;
     
-    private Button groupButton;
+    private GroupButton groupButton;
     private Button ungroupButton;
     
     private Button duplicate;
@@ -89,7 +89,7 @@ public class Paint extends Application{
         rectangleButton = new Button("Rectangle");
         rectangleButton.addEventHandler(ActionEvent.ACTION, new RectangleButtonHandler(drawing));
         
-        groupButton = new Button("Grouper");
+        groupButton = new GroupButton(drawing);
         groupButton.addEventHandler(ActionEvent.ACTION, new CompositeShapeHandler(drawing));
         
         ungroupButton = new Button("Dégrouper");
