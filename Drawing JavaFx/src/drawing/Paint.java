@@ -32,7 +32,7 @@ public class Paint extends Application{
     private UndoButton undo;
     private RedoButton redo;
     
-    private Button addTextButton;
+    private TextButton addTextButton;
     
     private Button rearrange;
     private ComboBox<String> listAlgoRearrange;
@@ -104,7 +104,7 @@ public class Paint extends Application{
         redo = new RedoButton(drawing);
         redo.addEventHandler(ActionEvent.ACTION, new RedoButtonHandler(drawing));
         
-        addTextButton = new Button("Ajouter texte");
+        addTextButton = new TextButton(drawing);
         addTextButton.addEventHandler(ActionEvent.ACTION, new TextButtonHandler(drawing));
         
         String[] elements = new String[]{"Grid", "Random", "Vertical","Sort"};
