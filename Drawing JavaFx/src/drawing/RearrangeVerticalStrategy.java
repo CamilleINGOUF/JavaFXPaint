@@ -17,12 +17,11 @@ public class RearrangeVerticalStrategy extends RearrangeStrategy {
 
 	@Override
 	public void rearrange(Drawing drawing) {
+		super.rearrange(drawing);
 		
 		double tallest = 50;
 		
-		for(Shape s : drawing) {
-			oldShapes.add(s);
-			newShapes.add(s.clone());
+		for(Shape s : oldShapes) {
 			if(s.getHeight() > tallest)
 				tallest = s.getHeight();
 		}

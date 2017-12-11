@@ -19,6 +19,7 @@ public class RearrangeGridStrategy extends RearrangeStrategy {
 
 	@Override
 	public void rearrange(Drawing drawing) {
+		super.rearrange(drawing);
 		int numberShapes = Iterators.size(drawing.iterator());
 		int column = 0;
 		int line = 0;
@@ -41,9 +42,7 @@ public class RearrangeGridStrategy extends RearrangeStrategy {
 			}
 		}
 
-		for(Shape s :  drawing) {
-			oldShapes.add(s);
-			newShapes.add(s.clone());
+		for(Shape s :  oldShapes) {
 			if(s.getHeight() > tallest) 
 				tallest = s.getHeight();
 				

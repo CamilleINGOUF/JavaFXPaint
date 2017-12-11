@@ -17,10 +17,7 @@ public class RearrangeRandomStrategy extends RearrangeStrategy {
 
 	@Override
 	public void rearrange(Drawing drawing) {
-		for(Shape s : drawing) {
-			oldShapes.add(s);
-			newShapes.add(s.clone());
-		}
+		super.rearrange(drawing);
 		
 		for(int i = 0; i < newShapes.size(); i++) {
 			

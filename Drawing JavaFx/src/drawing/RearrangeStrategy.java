@@ -36,5 +36,18 @@ public abstract class RearrangeStrategy {
 
 	public abstract RearrangeStrategy clone();
 	
-	public abstract void rearrange(Drawing drawing);
+	public void rearrange(Drawing drawing) {
+		for(Shape s : drawing) {
+			oldShapes.add(s);
+			newShapes.add(s.clone());
+		}
+		
+		if(oldShapes.size() <= 0 ) {
+			try {
+				throw new DrawingException("No drawn shape");
+			} catch (DrawingException e) {
+				StatusExceptionSingleton.getInstance().sendError(e.getMessage());
+			}
+		}
+	}
 }
