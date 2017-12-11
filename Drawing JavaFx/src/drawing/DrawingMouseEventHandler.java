@@ -40,7 +40,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         	MouseEvent me = (MouseEvent) event;
         	for (Shape s : drawing) 
         	{
-                 if (s.isOn(new Point2D(me.getX(), me.getY()))) 
+                 if (s.isOn(new Point2D(me.getX(), me.getY())))
                  {
                      currentShape = s;
                  }
@@ -55,7 +55,6 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         			s.setSelected(false);
         	}
         	currentShape.setSelected(true);
-        	notifyObservers();
         }
 
         if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 
@@ -65,7 +64,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
             orgSceneY = me.getSceneY();
 
             for (Shape s : drawing) {
-                if (s.isOn(new Point2D(me.getX(), me.getY()))) 
+                if (s.isOn(new Point2D(me.getX(), me.getY())))
                 {
                 	currentShape = s;
                 }
@@ -76,7 +75,7 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
             }
         }
 
-        if (event.getEventType().equals(MouseEvent.MOUSE_DRAGGED)) 
+        if (event.getEventType().equals(MouseEvent.MOUSE_DRAGGED))
         {
         	MouseEvent me = (MouseEvent) event;
             double offsetX = me.getSceneX() - orgSceneX;
@@ -104,12 +103,12 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
         		try {
 					translateCommand.execute();
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
         	}
             currentShape = null;
         }
+    	notifyObservers();
     }
     
     public void registerObserver(Observer s)

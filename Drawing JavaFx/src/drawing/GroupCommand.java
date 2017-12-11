@@ -50,8 +50,13 @@ public class GroupCommand extends Command
 			groupedShapes.add(shape);
 		}
 		
-		while(drawing.getSelectedShapes().size() != 0)
-			drawing.remove(drawing.getSelectedShapes().get(0));
+		while(drawing.getSelectedShapes().size() != 0) {
+			Shape tmp = drawing.getSelectedShapes().get(0);
+			tmp.setSelected(false);
+			drawing.remove(tmp);
+		}
+		
+		cs.setSelected(true);
 		
 		drawing.addShape(cs);
 		createdGroup = cs;
