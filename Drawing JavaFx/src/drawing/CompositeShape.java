@@ -53,6 +53,16 @@ public class CompositeShape extends Shape
         }
     }
 	
+	public void setSelected(boolean flag) {
+		selected = flag;
+		for(Shape s : shapes)
+			s.setSelected(flag);
+	}
+	
+	public boolean isSelected() {
+		return selected;
+	}
+	
 	/* Composite */
     public void add(Shape e) 
     {
