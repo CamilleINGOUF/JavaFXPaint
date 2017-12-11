@@ -25,8 +25,9 @@ public class Circle extends Shape
 
     @Override
     public void paint(GraphicsContext gc) {
+    	Color border = selected ? Color.LIGHTSTEELBLUE : Color.ORANGE;
         gc.setFill(Color.YELLOW);
-        gc.setStroke(Color.ORANGE);
+        gc.setStroke(border);
         gc.setLineWidth(3);
         gc.fillOval(origin.getX()-radius, origin.getY()-radius, 2*radius, 2*radius);
         gc.strokeOval(origin.getX()-radius, origin.getY()-radius, 2*radius, 2*radius);

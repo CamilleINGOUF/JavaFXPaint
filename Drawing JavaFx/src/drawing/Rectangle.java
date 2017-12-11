@@ -27,8 +27,9 @@ public class Rectangle extends Shape {
 
     @Override
     public void paint(GraphicsContext gc) {
+    	Color border = selected ? Color.LIGHTGREEN : Color.GREEN;
         gc.setFill(Color.GREENYELLOW);
-        gc.setStroke(Color.GREEN);
+        gc.setStroke(border);
         gc.setLineWidth(3);
         gc.fillRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
         gc.strokeRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
