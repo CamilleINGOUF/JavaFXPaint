@@ -29,8 +29,8 @@ public class GroupCommand extends Command
 	public void execute() throws Exception 
 	{	
 		super.execute();
-		if(drawing.getSelectedShapes().size() == 0)
-			throw new Exception("No Shape selected");
+		if(drawing.getSelectedShapes().size() <= 1)
+			throw new Exception("You need at least 2 shapes selected");
 		
 		double x = drawing.getSelectedShapes().get(0).getOrigin().getX();
 		double y = drawing.getSelectedShapes().get(0).getOrigin().getY();

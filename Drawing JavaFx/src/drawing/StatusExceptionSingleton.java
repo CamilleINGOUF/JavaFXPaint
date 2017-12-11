@@ -5,7 +5,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-public class StatusExceptionSingleton extends HBox{
+public class StatusExceptionSingleton extends HBox {
 	
 	private static StatusExceptionSingleton instance = null;
 	
@@ -35,6 +35,6 @@ public class StatusExceptionSingleton extends HBox{
 	
 	public void hide() {
 		setVisible(false);
-		error.setText("");;
+		error.setText("");
 	}
 }
