@@ -46,15 +46,18 @@ public class DrawingMouseEventHandler implements EventHandler<InputEvent>{
                  }
         	}
         	
-        	if(currentShape == null)
+        	if(currentShape == null) {
+        		for(Shape s : drawing)
+        			s.setSelected(false);
         		return;
+        	}
         	
         	if(!me.isShiftDown())
         	{
         		for(Shape s : drawing)
         			s.setSelected(false);
         	}
-        	currentShape.setSelected(true);
+        	currentShape.setSelected(!currentShape.isSelected());
         }
 
         if (event.getEventType().equals(MouseEvent.MOUSE_PRESSED)) 
