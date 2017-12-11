@@ -51,12 +51,12 @@ public class TextShapeDecorator extends ShapeDecorator {
 
 	@Override
 	public double getHeight() {
-		return 0;
+		return shape.getHeight();
 	}
 
 	@Override
 	public double getWidth() {
-		return 0;
+		return shape.getWidth();
 	}
 
 }

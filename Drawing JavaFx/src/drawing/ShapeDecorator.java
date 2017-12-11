@@ -12,8 +12,9 @@ public abstract class ShapeDecorator extends Shape {
 		shape = decoratedShape;
 	}
 
-	public ShapeDecorator(Shape that) {
-		super(that);	
+	public ShapeDecorator(ShapeDecorator that) {
+		super(that);
+		this.shape = that.shape.clone();
 	}
 
 	@Override
