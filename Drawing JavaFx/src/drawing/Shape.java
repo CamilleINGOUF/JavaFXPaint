@@ -24,6 +24,11 @@ public abstract class Shape implements Comparable<Shape>
 		selected = false;
 	}
 
+	public Shape() {
+		this.origin = new Point2D(0, 0);
+		selected = false;
+	}
+
 	public Point2D getOrigin() 
 	{
 		return origin;

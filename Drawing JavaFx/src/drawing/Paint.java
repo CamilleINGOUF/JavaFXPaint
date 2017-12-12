@@ -38,6 +38,7 @@ public class Paint extends Application{
     private ComboBox<String> listAlgoRearrange;
     
     private Button save;
+    private Button load;
     
     StatusExceptionSingleton errorBox;
 
@@ -71,7 +72,7 @@ public class Paint extends Application{
         bottomBox.getChildren().add(createStatusBox());
         border.setBottom(bottomBox);
 
-        Scene scene = new Scene(border, 1000, 700);
+        Scene scene = new Scene(border, 1200, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -125,8 +126,10 @@ public class Paint extends Application{
         save = new Button("Save");
         save.addEventFilter(ActionEvent.ACTION, new SaveButtonHandler(drawing));
         
+        load = new Button("Load");
+        
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
-        hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange,sep2,save);
+        hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange,sep2,save,load);
         
         return hbox;
     }

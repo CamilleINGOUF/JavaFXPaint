@@ -11,6 +11,10 @@ public class Circle extends Shape
 {
 
     private double radius;
+    
+    public Circle() {
+    	super();
+    }
 
     public Circle(Point2D origin, double radius) {
         super(origin);
@@ -40,6 +44,10 @@ public class Circle extends Shape
 
     private double distanceToCenter(Point2D p) {
         return Math.abs(this.origin.distance(p));
+    }
+    
+    public void setRadius(double r) {
+    	radius = r;
     }
 
 	@Override
