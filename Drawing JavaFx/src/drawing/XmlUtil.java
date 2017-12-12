@@ -74,9 +74,9 @@ public class XmlUtil {
 		writer.writeEndElement();
 	}
 	
-	public static void saveDrawing(Drawing drawing) throws FileNotFoundException, XMLStreamException {
+	public static void saveDrawing(Drawing drawing, String filename) throws FileNotFoundException, XMLStreamException {
 		XMLOutputFactory output = XMLOutputFactory.newInstance();
-		XMLStreamWriter writer = output.createXMLStreamWriter(new FileOutputStream("drawing.xml"));
+		XMLStreamWriter writer = output.createXMLStreamWriter(new FileOutputStream(filename));
 		for(Shape s : drawing) {
 			parse(s, writer);
 		}

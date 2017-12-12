@@ -2,6 +2,7 @@ package drawing;
 
 import java.io.FileNotFoundException;
 
+import javax.swing.JOptionPane;
 import javax.xml.stream.XMLStreamException;
 
 import javafx.event.ActionEvent;
@@ -18,9 +19,14 @@ public class SaveButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		try {
-			XmlUtil.saveDrawing(drawing);
-		} catch (FileNotFoundException | XMLStreamException e) {
+			String s = JOptionPane.showInputDialog("File name ?");
+			if(s == null || s.equals(""))
+				return;
+		
+			XmlUtil.saveDrawing(drawing,s+".xml");
+		} catch (FileNotFoundException | XMLStreamException e ) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
 		}
 	}
 
