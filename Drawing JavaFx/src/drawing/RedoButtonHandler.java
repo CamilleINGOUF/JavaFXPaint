@@ -18,7 +18,6 @@ public class RedoButtonHandler implements EventHandler<ActionEvent>
 		try {
 			redoCommand.execute();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

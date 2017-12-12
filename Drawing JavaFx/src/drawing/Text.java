@@ -22,6 +22,10 @@ public class Text extends Shape {
 	{
 		this.text = new String(text);
 	}
+	
+	public String getString() {
+		return text;
+	}
 
 	@Override
 	public void paint(GraphicsContext gc) {

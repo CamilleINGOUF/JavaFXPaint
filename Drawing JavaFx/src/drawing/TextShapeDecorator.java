@@ -22,6 +22,10 @@ public class TextShapeDecorator extends ShapeDecorator {
 		text.setText(txt);
 	}
 	
+	public Text getText() {
+		return text;
+	}
+	
 	@Override
 	public void paint(GraphicsContext gc) {
 		super.paint(gc);

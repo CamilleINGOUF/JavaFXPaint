@@ -37,6 +37,8 @@ public class Paint extends Application{
     private Button rearrange;
     private ComboBox<String> listAlgoRearrange;
     
+    private Button save;
+    
     StatusExceptionSingleton errorBox;
 
     public static void main(String[] args) {
@@ -118,9 +120,13 @@ public class Paint extends Application{
         rearrange.addEventHandler(ActionEvent.ACTION, rearrangeHandler);
         
         Separator sep = new Separator(Orientation.VERTICAL);
+        Separator sep2 = new Separator(Orientation.VERTICAL);
+        
+        save = new Button("Save");
+        save.addEventFilter(ActionEvent.ACTION, new SaveButtonHandler(drawing));
         
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
-        hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange);
+        hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange,sep2,save);
         
         return hbox;
     }

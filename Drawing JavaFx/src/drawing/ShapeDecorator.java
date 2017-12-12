@@ -37,4 +37,8 @@ public abstract class ShapeDecorator extends Shape {
 	@Override
 	public abstract Shape clone();
 
+	public Shape getShape() {
+		return shape;
+	}
+
 }

@@ -54,7 +54,7 @@ public class TextDecoratorCommand extends Command {
 
 	@Override
 	public void undo() {
-		for(TextShapeDecorator tsd : decorators)
+		for(ShapeDecorator tsd : decorators)
 			drawing.remove(tsd);
 		for(Shape s : oldShapes)
 			drawing.addShape(s);
@@ -62,7 +62,7 @@ public class TextDecoratorCommand extends Command {
 
 	@Override
 	public void redo() {
-		for(TextShapeDecorator tsd : decorators)
+		for(ShapeDecorator tsd : decorators)
 			drawing.addShape(tsd);
 		for(Shape s : oldShapes)
 			drawing.remove(s);
