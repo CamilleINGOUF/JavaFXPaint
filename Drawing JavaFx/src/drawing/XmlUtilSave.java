@@ -9,7 +9,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import javafx.geometry.Point2D;
 
-public class XmlUtil {
+public class XmlUtilSave {
 	
 	private static void parse(Shape shape, XMLStreamWriter writer) throws XMLStreamException {
 		if(shape instanceof Circle)

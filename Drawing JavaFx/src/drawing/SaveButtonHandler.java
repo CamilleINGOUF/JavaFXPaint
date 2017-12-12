@@ -23,7 +23,7 @@ public class SaveButtonHandler implements EventHandler<ActionEvent> {
 			if(s == null || s.equals(""))
 				return;
 		
-			XmlUtil.saveDrawing(drawing,s+".xml");
+			XmlUtilSave.saveDrawing(drawing,s+".xml");
 		} catch (FileNotFoundException | XMLStreamException e ) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
