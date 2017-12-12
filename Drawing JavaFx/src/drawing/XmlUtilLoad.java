@@ -27,7 +27,8 @@ public class XmlUtilLoad {
 			int eventType = reader.next();
 			switch (eventType) {
 			case XMLStreamReader.ATTRIBUTE:
-				//TODO
+				shapeClass = point.getClass();
+				
 				break;
 			case XMLStreamReader.END_ELEMENT:
 				return;

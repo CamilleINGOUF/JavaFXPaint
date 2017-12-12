@@ -62,8 +62,8 @@ public class XmlUtilSave {
 	
 	private static void parse(Point2D point, XMLStreamWriter writer) throws XMLStreamException {
 		writer.writeStartElement("Point");
-		writer.writeAttribute("x", point.getX()+" ");
-		writer.writeAttribute("y", point.getY()+" ");
+		writer.writeAttribute("X", point.getX()+" ");
+		writer.writeAttribute("Y", point.getY()+" ");
 		writer.writeEndElement();
 	}
 	
