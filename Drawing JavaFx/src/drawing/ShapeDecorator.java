@@ -17,6 +17,10 @@ public abstract class ShapeDecorator extends Shape {
 		this.shape = that.shape.clone();
 	}
 
+	public ShapeDecorator() {
+		super();
+	}
+
 	@Override
 	public void paint(GraphicsContext gc) {
 		shape.paint(gc);
@@ -39,6 +43,10 @@ public abstract class ShapeDecorator extends Shape {
 
 	public Shape getShape() {
 		return shape;
+	}
+	
+	public void setShape(Shape s) {
+		this.shape = s;
 	}
 
 }

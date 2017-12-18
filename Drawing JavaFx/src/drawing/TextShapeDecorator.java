@@ -17,9 +17,17 @@ public class TextShapeDecorator extends ShapeDecorator {
 		this.text = that.text;
 	}
 	
+	public TextShapeDecorator() {
+		super();
+	}
+
 	public void setText(String txt)
 	{
 		text.setText(txt);
+	}
+	
+	public void setText(Text text) {
+		this.text = text;
 	}
 	
 	public Text getText() {

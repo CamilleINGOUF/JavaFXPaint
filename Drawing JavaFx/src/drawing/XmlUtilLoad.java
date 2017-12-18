@@ -63,7 +63,7 @@ public class XmlUtilLoad {
 		boolean flag = true;
 		
 		while(flag) {
-			reader.next();
+			reader.next();//start element
 			int eventType = reader.getEventType();
 			
 			if(reader.getLocalName().equals("Shapes") && eventType == XMLStreamReader.END_ELEMENT) {
@@ -71,15 +71,40 @@ public class XmlUtilLoad {
 			} else {
 				shapes.add(parse(reader,reader.getLocalName()));
 			}
-			reader.next();
+			reader.next();//end element
 		}
 		for(Shape s : shapes)
 			group.add(s);
 		return group;
 	}
 
-	private static Shape parseTextDecorator(XMLStreamReader reader) {
-		return null;
+	private static TextShapeDecorator parseTextDecorator(XMLStreamReader reader) throws XMLStreamException {
+		TextShapeDecorator deco = new TextShapeDecorator();
+		
+		reader.next();// start Text
+		Text text = parseText(reader);
+		reader.next(); // end Text - start Point
+		
+		Point2D point = parsePoint(reader);
+		reader.next();//end Point - start Shape
+		Shape shape = parse(reader, reader.getLocalName());
+		
+		deco.setText(text);
+		deco.setShape(shape);
+		deco.setOrigin(point.getX(), point.getY());
+		reader.next();
+		
+		return deco;
+	}
+	
+	private static Text parseText(XMLStreamReader reader) throws XMLStreamException {
+		Text text = new Text();
+		text.setText(reader.getAttributeValue(0));
+		reader.next();// Point 
+		Point2D point = parsePoint(reader);
+		text.setOrigin(point.getX(), point.getY());
+		reader.next();//end Point
+		return text;
 	}
 
 	public static void loadDrawing(Drawing drawing, String filename) throws FileNotFoundException, XMLStreamException {

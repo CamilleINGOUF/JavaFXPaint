@@ -18,6 +18,10 @@ public class Text extends Shape {
 		text = new String(that.text);
 	}
 	
+	public Text() {
+		super();
+	}
+
 	public void setText(String text)
 	{
 		this.text = new String(text);
