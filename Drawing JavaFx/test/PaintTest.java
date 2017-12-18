@@ -115,5 +115,21 @@ public class PaintTest extends ApplicationTest {
         assertTrue(it.next() instanceof Circle);
         assertFalse(it.hasNext());
     }
+    
+//    @Test
+//    public void place_100000_Circle() {
+//        interact(() -> {
+//	for(int i = 0; i < 100000; i++) {
+//    		
+//    		int randX = (int) (Math.random()*800);
+//    		int randY = (int) (Math.random()*600);
+//    		
+//    		Circle circle = new Circle(new Point2D(randX+10, randY+10), 100);
+//
+//    		app.getDrawing().addShape(circle);
+//    	}
+//        });
+//        System.out.println("fini");
+//    }
 
 }
