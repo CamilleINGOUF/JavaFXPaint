@@ -24,15 +24,15 @@ public class XmlUtilSave {
 	
 	private static void parse(Circle circle, XMLStreamWriter writer) throws XMLStreamException {
 		writer.writeStartElement("Circle");
-		writer.writeAttribute("radius", circle.getWidth()/2+" ");
+		writer.writeAttribute("radius", circle.getWidth()/2+"");
 		parse(circle.getOrigin(),writer);
 		writer.writeEndElement();
 	}
 	
 	private static void parse(Rectangle rectangle, XMLStreamWriter writer) throws XMLStreamException {
 		writer.writeStartElement("Rectangle");
-		writer.writeAttribute("width", rectangle.getWidth()+" ");
-		writer.writeAttribute("height", rectangle.getHeight()+" ");
+		writer.writeAttribute("width", rectangle.getWidth()+"");
+		writer.writeAttribute("height", rectangle.getHeight()+"");
 		parse(rectangle.getOrigin(),writer);
 		writer.writeEndElement();
 	}
@@ -62,8 +62,8 @@ public class XmlUtilSave {
 	
 	private static void parse(Point2D point, XMLStreamWriter writer) throws XMLStreamException {
 		writer.writeStartElement("Point");
-		writer.writeAttribute("X", point.getX()+" ");
-		writer.writeAttribute("Y", point.getY()+" ");
+		writer.writeAttribute("X", point.getX()+"");
+		writer.writeAttribute("Y", point.getY()+"");
 		writer.writeEndElement();
 	}
 	
@@ -77,9 +77,13 @@ public class XmlUtilSave {
 	public static void saveDrawing(Drawing drawing, String filename) throws FileNotFoundException, XMLStreamException {
 		XMLOutputFactory output = XMLOutputFactory.newInstance();
 		XMLStreamWriter writer = output.createXMLStreamWriter(new FileOutputStream(filename));
+		writer.writeStartDocument();
+		writer.writeStartElement("Drawing");
 		for(Shape s : drawing) {
 			parse(s, writer);
 		}
+		writer.writeEndElement();
+		writer.writeEndDocument();
 		writer.flush();
 		writer.close();
 	}

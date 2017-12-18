@@ -25,7 +25,11 @@ public class Rectangle extends Shape {
     	this.height = that.height;
 	}
 
-    @Override
+    public Rectangle() {
+    	super();
+	}
+
+	@Override
     public void paint(GraphicsContext gc) {
     	Color border = selected ? Color.LIGHTGREEN : Color.GREEN;
         gc.setFill(Color.GREENYELLOW);
@@ -61,4 +65,13 @@ public class Rectangle extends Shape {
 	public double getWidth() {
 		return width;
 	}
+	
+	public void setWidth(double w) {
+		this.width = w;
+	}
+	
+	public void setHeight(double h) {
+		this.height = h;
+	}
+	
 }

@@ -75,6 +75,8 @@ public class Paint extends Application{
         Scene scene = new Scene(border, 1200, 800);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
     }
 
     private HBox createButtonsBox() {
@@ -127,6 +129,7 @@ public class Paint extends Application{
         save.addEventFilter(ActionEvent.ACTION, new SaveButtonHandler(drawing));
         
         load = new Button("Load");
+        load.addEventFilter(ActionEvent.ACTION, new LoadButtonHandler(drawing));
         
         hbox.getChildren().addAll(clearButton, circleButton, rectangleButton, addTextButton, groupButton, ungroupButton, duplicate,undo,redo);
         hbox.getChildren().addAll(sep,listAlgoRearrange,rearrange,sep2,save,load);
