@@ -27,6 +27,7 @@ public class Rectangle extends Shape {
 
     public Rectangle() {
     	super();
+    	System.out.println("Create Rectangle");
 	}
 
 	@Override

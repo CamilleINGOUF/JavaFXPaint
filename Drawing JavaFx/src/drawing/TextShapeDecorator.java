@@ -70,5 +70,5 @@ public class TextShapeDecorator extends ShapeDecorator {
 	public double getWidth() {
 		return shape.getWidth();
 	}
-
+	
 }
