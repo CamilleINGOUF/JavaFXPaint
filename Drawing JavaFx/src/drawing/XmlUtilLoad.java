@@ -17,6 +17,10 @@ public class XmlUtilLoad {
 			return parseCircle(reader);
 		} else if(shape.equals("Rectangle")) {
 			return parseRectangle(reader);
+		} else if (shape.equals("CompositeShape")) {
+			return parseGroup(reader);
+		} else if(shape.equals("TextShapeDecorator")) {
+			return parseTextDecorator(reader);
 		}
 		return null;
 	}
@@ -48,6 +52,34 @@ public class XmlUtilLoad {
 		circle.setOrigin(point.getX(), point.getY());
 
 		return circle;
+	}
+	
+	private static CompositeShape parseGroup(XMLStreamReader reader) throws XMLStreamException {
+		reader.next();
+		CompositeShape group = new CompositeShape(parsePoint(reader));
+		reader.next();
+		
+		ArrayList<Shape> shapes = new ArrayList<>();
+		boolean flag = true;
+		
+		while(flag) {
+			reader.next();
+			int eventType = reader.getEventType();
+			
+			if(reader.getLocalName().equals("Shapes") && eventType == XMLStreamReader.END_ELEMENT) {
+				flag = false;
+			} else {
+				shapes.add(parse(reader,reader.getLocalName()));
+			}
+			reader.next();
+		}
+		for(Shape s : shapes)
+			group.add(s);
+		return group;
+	}
+
+	private static Shape parseTextDecorator(XMLStreamReader reader) {
+		return null;
 	}
 
 	public static void loadDrawing(Drawing drawing, String filename) throws FileNotFoundException, XMLStreamException {

@@ -18,7 +18,7 @@ public class LoadButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		try {
-			XmlUtilLoad.loadDrawing(drawing, "rectangle.xml");
+			XmlUtilLoad.loadDrawing(drawing, "text.xml");
 		} catch (FileNotFoundException | XMLStreamException e) {
 			e.printStackTrace();
 		}
