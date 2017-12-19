@@ -2,6 +2,7 @@ package drawing;
 
 import java.io.FileNotFoundException;
 
+import javax.swing.JOptionPane;
 import javax.xml.stream.XMLStreamException;
 
 import javafx.event.ActionEvent;
@@ -18,7 +19,11 @@ public class LoadButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
 		try {
-			XmlUtilLoad.loadDrawing(drawing, "text.xml");
+			String s = JOptionPane.showInputDialog("File name ?");
+			if(s == null || s.equals(""))
+				return;
+		
+			XmlUtilLoad.loadDrawing(drawing,s+".xml");
 		} catch (FileNotFoundException | XMLStreamException e) {
 			e.printStackTrace();
 		}
