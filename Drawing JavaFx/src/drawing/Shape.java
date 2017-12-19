@@ -11,6 +11,9 @@ public abstract class Shape implements Comparable<Shape>
 	protected Point2D origin;
 
 	protected boolean selected;
+	
+	protected double width;
+	protected double height;
 
 	public Shape(Point2D origin)
 	{

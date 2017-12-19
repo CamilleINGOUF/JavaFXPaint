@@ -21,6 +21,7 @@ public class CompositeShape extends Shape
 		this.shapes = new ArrayList<Shape>();
 		for(Shape s : that.shapes)
 			this.shapes.add(s.clone());
+		refreshBounds();
 	}
 
 	@Override
@@ -51,7 +52,32 @@ public class CompositeShape extends Shape
         	double yt = translateY + shapes.get(i).getOrigin().getY();
         	shapes.get(i).setOrigin(xt, yt);
         }
+        refreshBounds();
     }
+	
+	private void refreshBounds() {
+		double minX = 0;
+		double maxX = 0;
+		double minY = 0;
+		double maxY = 0;
+		
+		for(Shape s : shapes) {
+			double currentX = origin.getX() - s.getOrigin().getX();
+			double currentY = origin.getY() - s.getOrigin().getY();
+			if(minX > currentX)
+				minX = currentX;
+			else if(maxX < currentX)
+				maxX = currentX;
+			
+			if(minY > currentY)
+				minY = currentY;
+			else if(maxY < currentY)
+				maxY = currentY;
+		}
+		
+		height = maxY - minY;
+		width = maxX - minX;
+	}
 	
 	public void setSelected(boolean flag) {
 		selected = flag;
@@ -67,11 +93,13 @@ public class CompositeShape extends Shape
     public void add(Shape e) 
     {
         shapes.add(e);
+        refreshBounds();
     }
 	
     public void remove(Shape e) 
     {
     	shapes.remove(e);
+    	refreshBounds();
     }
 
     public ArrayList<Shape> getShapes()
@@ -99,11 +127,11 @@ public class CompositeShape extends Shape
 
 	@Override
 	public double getHeight() {
-		return 0;
+		return height;
 	}
 
 	@Override
 	public double getWidth() {
-		return 0;
+		return width;
 	}
 }
