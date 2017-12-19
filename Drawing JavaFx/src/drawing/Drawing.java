@@ -17,6 +17,8 @@ public class Drawing extends Canvas implements Iterable<Shape> {
 
     ArrayList<Shape> shapes;
     
+    ArrayList<double[]> savedShapes;
+    
     private ArrayList<Observer> observers;
     
     private CommandHistory commandHistory;
@@ -32,6 +34,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         this.addEventHandler(MouseEvent.MOUSE_CLICKED, handler);
         observers = new ArrayList<Observer>();
         commandHistory = new CommandHistory();
+        savedShapes = new ArrayList<>();
     }
     
     public DrawingMouseEventHandler getHandler() {
@@ -43,8 +46,12 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     {
         return shapes.iterator();
     }
+    
+    
 
     public void addShape(Shape shape) {
+    	savedShapes.add(new double[]{shape.getOrigin().getX(),shape.getOrigin().getY(),shape.getWidth(),shape.getHeight()});
+    	
         shapes.add(shape);
         repaint();
         notifyObservers();
@@ -58,6 +65,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
     
     public void remove(Shape s)
     {
+    	savedShapes.remove(shapes.indexOf(s));
     	shapes.remove(s);
     	notifyObservers();
     }
@@ -90,7 +98,7 @@ public class Drawing extends Canvas implements Iterable<Shape> {
         gc.clearRect(0,0,getWidth(), getHeight());
         for (Shape s: shapes) 
         {
-            s.paint(gc);
+            s.paint(gc,savedShapes.get(shapes.indexOf(s)));
         }
     }
 

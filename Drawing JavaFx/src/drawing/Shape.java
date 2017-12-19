@@ -44,7 +44,7 @@ public abstract class Shape implements Comparable<Shape>
 		selected = flag;
 	}
 
-	public abstract void paint(GraphicsContext gc) ;
+	public abstract void paint(GraphicsContext gc, double[] values) ;
 
 	public abstract boolean isOn(Point2D p);
 

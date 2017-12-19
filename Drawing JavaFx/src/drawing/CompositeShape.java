@@ -8,30 +8,36 @@ import javafx.scene.canvas.GraphicsContext;
 public class CompositeShape extends Shape
 {
 	private ArrayList<Shape> shapes;
+	
+	private ArrayList<double[]> savedShapes;
 
-	public CompositeShape(Point2D origin) 
+	public CompositeShape(Point2D origin)
 	{
 		super(origin);
 		shapes = new ArrayList<Shape>(0);
+		savedShapes = new ArrayList<>();
 	}
 	
 	public CompositeShape(CompositeShape that) 
 	{
 		super(that);
 		this.shapes = new ArrayList<Shape>();
+		this.savedShapes = new ArrayList<>();
 		for(Shape s : that.shapes)
 			this.shapes.add(s.clone());
+		for(double[] d : that.savedShapes)
+			this.savedShapes.add(d.clone());
 	}
 
 	@Override
-	public void paint(GraphicsContext gc)
+	public void paint(GraphicsContext gc,double[] values)
 	{
 		for(Shape s : shapes)
-			s.paint(gc);
+			s.paint(gc,savedShapes.get(shapes.indexOf(s)));
 	}
 
 	@Override
-	public boolean isOn(Point2D p) 
+	public boolean isOn(Point2D p)
 	{
 		for(Shape s : shapes)
 			if(s.isOn(p)) return true;
@@ -42,7 +48,7 @@ public class CompositeShape extends Shape
     {
 		double oldX = origin.getX();
 		double oldY = origin.getY();
-		double translateX = x- oldX ;
+		double translateX = x - oldX;
 		double translateY =  y - oldY;
         this.origin = new Point2D(x, y);
         for(int i = 0; i < shapes.size(); i++)
@@ -67,6 +73,7 @@ public class CompositeShape extends Shape
     public void add(Shape e) 
     {
         shapes.add(e);
+        
     }
 	
     public void remove(Shape e) 
@@ -78,6 +85,7 @@ public class CompositeShape extends Shape
     {
     	return shapes;
     }
+    
     /* ********* */
 
 	@Override

@@ -31,13 +31,13 @@ public class Rectangle extends Shape {
 	}
 
 	@Override
-    public void paint(GraphicsContext gc) {
+    public void paint(GraphicsContext gc, double[] values) {
     	Color border = selected ? Color.LIGHTGREEN : Color.GREEN;
         gc.setFill(Color.GREENYELLOW);
         gc.setStroke(border);
         gc.setLineWidth(3);
-        gc.fillRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
-        gc.strokeRect(origin.getX() - width/2, origin.getY() - height/2, width, height);
+        gc.fillRect(values[0]-values[2]/2, values[1]-values[3]/2, values[2], values[3]);
+        gc.strokeRect(values[0]-values[2]/2, values[1]-values[3]/2, values[2], values[3]);
     }
 
     @Override

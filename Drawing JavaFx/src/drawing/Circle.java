@@ -29,13 +29,13 @@ public class Circle extends Shape
 	}
 
     @Override
-    public void paint(GraphicsContext gc) {
+    public void paint(GraphicsContext gc, double[] values) {
     	Color border = selected ? Color.LIGHTSTEELBLUE : Color.ORANGE;
         gc.setFill(Color.YELLOW);
         gc.setStroke(border);
         gc.setLineWidth(3);
-        gc.fillOval(origin.getX()-radius, origin.getY()-radius, 2*radius, 2*radius);
-        gc.strokeOval(origin.getX()-radius, origin.getY()-radius, 2*radius, 2*radius);
+        gc.fillOval(values[0]-values[2]/2,values[1]-values[2]/2, values[2], values[2]);
+        gc.strokeOval(values[0]-values[2]/2, values[1]-values[2]/2, values[2], values[2]);
     }
 
     @Override
