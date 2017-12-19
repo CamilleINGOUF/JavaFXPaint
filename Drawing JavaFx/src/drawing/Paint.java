@@ -1,6 +1,7 @@
 package drawing;
 
 import buttons.ClearButton;
+import buttons.DuplicateButton;
 import buttons.GroupButton;
 import buttons.RedoButton;
 import buttons.TextButton;
@@ -46,7 +47,7 @@ public class Paint extends Application{
 	private GroupButton groupButton;
 	private UngroupButton ungroupButton;
 
-	private Button duplicate;
+	private DuplicateButton duplicate;
 
 	private UndoButton undo;
 	private RedoButton redo;
@@ -120,7 +121,7 @@ public class Paint extends Application{
 		ungroupButton = new UngroupButton(drawing);
 		ungroupButton.addEventHandler(ActionEvent.ACTION, new FreeShapeHandler(drawing));
 
-		duplicate = new Button("Dupliquer");
+		duplicate = new DuplicateButton(drawing);
 		duplicate.addEventHandler(ActionEvent.ACTION, new DuplicateButtonHandler(drawing));
 
 		undo = new UndoButton(drawing);

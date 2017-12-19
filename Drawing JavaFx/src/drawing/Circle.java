@@ -14,7 +14,6 @@ public class Circle extends Shape
     
     public Circle() {
     	super();
-    	System.out.println("Create Circle");
     }
 
     public Circle(Point2D origin, double radius) {
