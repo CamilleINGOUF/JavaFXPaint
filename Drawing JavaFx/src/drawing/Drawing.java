@@ -3,6 +3,8 @@ package drawing;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import commands.CommandHistory;
+import handlers.DrawingMouseEventHandler;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.MouseEvent;

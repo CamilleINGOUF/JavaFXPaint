@@ -2,6 +2,9 @@ package drawing;
 
 import java.util.ArrayList;
 
+import exceptions.DrawingException;
+import exceptions.StatusExceptionSingleton;
+
 public abstract class RearrangeStrategy {
 
 	protected ArrayList<Shape> oldShapes;

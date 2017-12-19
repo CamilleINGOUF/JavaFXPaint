@@ -1,5 +1,6 @@
 package drawing;
 
+import handlers.DrawingMouseEventHandler;
 import javafx.scene.text.Text;
 
 public class SelectedShapesObserver extends Text implements Observer {
