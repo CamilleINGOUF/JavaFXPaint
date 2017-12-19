@@ -48,5 +48,10 @@ public abstract class ShapeDecorator extends Shape {
 	public void setShape(Shape s) {
 		this.shape = s;
 	}
+	
+	@Override
+	public void setSelected(boolean flag) {
+		shape.setSelected(flag);
+	}
 
 }
