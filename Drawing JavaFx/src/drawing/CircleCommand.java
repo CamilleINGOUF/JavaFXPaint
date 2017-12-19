@@ -1,6 +1,5 @@
 package drawing;
 
-import drawing.ShapeFactory.ShapeType;
 import javafx.geometry.Point2D;
 
 public class CircleCommand extends Command 
@@ -30,7 +29,8 @@ public class CircleCommand extends Command
 	public void execute() throws Exception 
 	{
 		super.execute();
-		circle = (Circle) ShapeFactory.getShape(ShapeType.CIRCLE);
+//		circle = (Circle) ShapeFactory.getShape(ShapeType.CIRCLE);
+		circle = new Circle();
 		circle.setOrigin(origin.getX(), origin.getY());
 		circle.setRadius(destination.distance(origin));
 		drawing.addShape(circle);

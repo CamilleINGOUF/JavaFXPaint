@@ -1,6 +1,5 @@
 package drawing;
 
-import drawing.ShapeFactory.ShapeType;
 import javafx.geometry.Point2D;
 
 public class RectangleCommand extends Command
@@ -33,7 +32,8 @@ public class RectangleCommand extends Command
         double y = Math.min(origin.getY(),destination.getY());
         double width = Math.abs(destination.getX()-origin.getX());
         double height = Math.abs(destination.getY()-origin.getY());
-        rectangle = (Rectangle) ShapeFactory.getShape(ShapeType.RECTANGLE);
+//        rectangle = (Rectangle) ShapeFactory.getShape(ShapeType.RECTANGLE);
+        rectangle = new Rectangle();
         rectangle.setOrigin(x, y);
         rectangle.setWidth(width);
         rectangle.setHeight(height);

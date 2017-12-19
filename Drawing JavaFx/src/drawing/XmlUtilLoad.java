@@ -8,7 +8,6 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import drawing.ShapeFactory.ShapeType;
 import javafx.geometry.Point2D;
 
 
@@ -33,8 +32,8 @@ public class XmlUtilLoad {
 	}
 
 	private static Rectangle parseRectangle(XMLStreamReader reader) throws XMLStreamException {
-		Rectangle rectangle = (Rectangle) ShapeFactory.getShape(ShapeType.RECTANGLE);
-
+//		Rectangle rectangle = (Rectangle) ShapeFactory.getShape(ShapeType.RECTANGLE);
+		Rectangle rectangle = new Rectangle();
 		rectangle.setWidth(Double.parseDouble(reader.getAttributeValue(0)));
 		rectangle.setHeight(Double.parseDouble(reader.getAttributeValue(1)));
 		reader.next();
@@ -45,8 +44,8 @@ public class XmlUtilLoad {
 	}
 
 	private static Circle parseCircle(XMLStreamReader reader) throws XMLStreamException {
-		Circle circle = (Circle) ShapeFactory.getShape(ShapeType.CIRCLE);
-		
+//		Circle circle = (Circle) ShapeFactory.getShape(ShapeType.CIRCLE);
+		Circle circle = new Circle();
 		circle.setRadius(Double.parseDouble(reader.getAttributeValue(0)));
 		reader.next();
 		Point2D point = parsePoint(reader);
